@@ -84,14 +84,14 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeaderFile>RoboCatServerPCH.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\SDL\include;Inc;..\;..\RoboCat\Inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SDL\include;Inc;..\;..\RoboCat\Inc;C:\SFML-2.3.2\include</AdditionalIncludeDirectories>
       <IntrinsicFunctions>true</IntrinsicFunctions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ws2_32.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\SDL\lib\win\x86</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ws2_32.lib;SDL2.lib;SDL2main.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-main-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SFML-2.3.2\lib;..\SDL\lib\win\x86</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(ProjectDir)\..\SDL\lib\win\x86\*.dll" "$(OutDir)" /i /s /y</Command>
@@ -110,15 +110,15 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeaderFile>RoboCatServerPCH.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\SDL\include;Inc;..\;..\RoboCat\Inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SDL\include;Inc;..\;..\RoboCat\Inc;C:\SFML-2.3.2\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>ws2_32.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\SDL\lib\win\x86</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ws2_32.lib;SDL2.lib;SDL2main.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-main-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SFML-2.3.2\lib;..\SDL\lib\win\x86</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(ProjectDir)\..\SDL\lib\win\x86\*.dll" "$(OutDir)" /i /s /y</Command>
