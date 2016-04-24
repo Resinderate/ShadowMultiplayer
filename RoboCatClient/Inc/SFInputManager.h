@@ -8,7 +8,7 @@ public:
 	static void StaticInit();
 	static unique_ptr< SFInputManager >	sInstance;
 
-	void HandleInput(EInputAction inInputAction, int inKeyCode);
+	void HandleInput(SFEInputAction inInputAction, uint8_t inKeyCode);
 
 	const SFInputState& GetState()	const { return mCurrentState; }
 

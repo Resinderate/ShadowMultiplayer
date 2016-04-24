@@ -15,48 +15,50 @@ void SFInputManager::StaticInit()
 
 namespace
 {
-	inline void UpdateDesireVariableFromKey(EInputAction inInputAction, bool& ioVariable)
+	inline void UpdateDesireVariableFromKey(SFEInputAction inInputAction, bool& ioVariable)
 	{
-		if (inInputAction == EIA_Pressed)
+		if (inInputAction == SFEInputAction::EIA_Pressed)
 		{
 			ioVariable = true;
 		}
-		else if (inInputAction == EIA_Released)
+		else if (inInputAction == SFEInputAction::EIA_Released)
 		{
 			ioVariable = false;
 		}
 	}
 
-	inline void UpdateDesireFloatFromKey(EInputAction inInputAction, float& ioVariable)
+	inline void UpdateDesireFloatFromKey(SFEInputAction inInputAction, float& ioVariable)
 	{
-		if (inInputAction == EIA_Pressed)
+		if (inInputAction == SFEInputAction::EIA_Pressed)
 		{
 			ioVariable = 1.f;
 		}
-		else if (inInputAction == EIA_Released)
+		else if (inInputAction == SFEInputAction::EIA_Released)
 		{
 			ioVariable = 0.f;
 		}
 	}
 }
 
-void SFInputManager::HandleInput(EInputAction inInputAction, int inKeyCode)
+//Kevin 
+//inKeyCode will be a const uint8_t from Attributes.h associated with sf:keyboard keys 
+void SFInputManager::HandleInput(SFEInputAction inInputAction, uint8_t inKeyCode)
 {
 	switch (inKeyCode)
 	{
-	case 'a':
+	case 0:
 		UpdateDesireFloatFromKey(inInputAction, mCurrentState.mDesiredLeftAmount);
 		break;
-	case 'd':
+	case 1:
 		UpdateDesireFloatFromKey(inInputAction, mCurrentState.mDesiredRightAmount);
 		break;
-	case 'w':
+	case 2:
 		UpdateDesireFloatFromKey(inInputAction, mCurrentState.mDesiredForwardAmount);
 		break;
-	case 's':
+	case 3:
 		UpdateDesireFloatFromKey(inInputAction, mCurrentState.mDesiredBackAmount);
 		break;
-	case 'k':
+	case 4:
 		UpdateDesireVariableFromKey(inInputAction, mCurrentState.mIsShooting);
 		break;
 	}
