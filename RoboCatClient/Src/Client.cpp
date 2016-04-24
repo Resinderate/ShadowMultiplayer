@@ -21,8 +21,9 @@ bool Client::StaticInit( )
 	InputManager::StaticInit();
 
 	// New Versions.
-	SFTextureManager::StaticInit();
 	SFWindowManager::StaticInit();
+	SFTextureManager::StaticInit();
+	SFRenderManager::StaticInit();
 
 	HUD::StaticInit();
 
@@ -61,6 +62,7 @@ void Client::DoFrame()
 	NetworkManagerClient::sInstance->ProcessIncomingPackets();
 
 	RenderManager::sInstance->Render();
+	SFRenderManager::sInstance->Render();
 
 	NetworkManagerClient::sInstance->SendOutgoingPackets();
 }

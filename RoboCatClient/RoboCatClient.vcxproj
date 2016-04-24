@@ -16,6 +16,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Log.cpp" />
+    <ClCompile Include="Src\SFRenderManger.cpp" />
     <ClCompile Include="Src\SFSpriteComponent.cpp" />
     <ClCompile Include="Src\SFTextureManager.cpp" />
     <ClCompile Include="Src\SFWindowManager.cpp" />
@@ -42,6 +44,8 @@
   <ItemGroup>
     <ClInclude Include="Inc\Client.h" />
     <ClInclude Include="Inc\GraphicsDriver.h" />
+    <ClInclude Include="Inc\Log.h" />
+    <ClInclude Include="Inc\SFRenderManager.h" />
     <ClInclude Include="Inc\SFSpriteComponent.h" />
     <ClInclude Include="Inc\SFTextureManager.h" />
     <ClInclude Include="Inc\SFWindowManager.h" />
