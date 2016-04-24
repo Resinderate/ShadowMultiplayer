@@ -16,6 +16,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\SFSpriteComponent.cpp" />
     <ClCompile Include="Src\SFTextureManager.cpp" />
     <ClCompile Include="Src\SFWindowManager.cpp" />
     <ClCompile Include="Src\YarnClient.cpp" />
@@ -41,6 +42,7 @@
   <ItemGroup>
     <ClInclude Include="Inc\Client.h" />
     <ClInclude Include="Inc\GraphicsDriver.h" />
+    <ClInclude Include="Inc\SFSpriteComponent.h" />
     <ClInclude Include="Inc\SFTextureManager.h" />
     <ClInclude Include="Inc\SFWindowManager.h" />
     <ClInclude Include="Inc\YarnClient.h" />

@@ -66,6 +66,9 @@
     <ClCompile Include="Src\SFWindowManager.cpp">
       <Filter>Src</Filter>
     </ClCompile>
+    <ClCompile Include="Src\SFSpriteComponent.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\RoboCatClientPCH.h">
@@ -117,6 +120,9 @@
       <Filter>Inc</Filter>
     </ClInclude>
     <ClInclude Include="Inc\SFWindowManager.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\SFSpriteComponent.h">
       <Filter>Inc</Filter>
     </ClInclude>
   </ItemGroup>

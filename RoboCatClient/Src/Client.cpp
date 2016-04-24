@@ -21,8 +21,8 @@ bool Client::StaticInit( )
 	InputManager::StaticInit();
 
 	// New Versions.
-	//SFTextureManager::StaticInit();
-	//SFWindowManager::StaticInit();
+	SFTextureManager::StaticInit();
+	SFWindowManager::StaticInit();
 
 	HUD::StaticInit();
 

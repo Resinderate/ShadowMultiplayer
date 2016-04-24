@@ -83,4 +83,8 @@ void RenderManager::Render()
     //
 	GraphicsDriver::sInstance->Present();
 
+	for (auto i : World::sInstance->GetGameObjects())
+	{
+	}
+
 }

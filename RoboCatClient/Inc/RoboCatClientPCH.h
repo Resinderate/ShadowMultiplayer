@@ -8,6 +8,7 @@
 #include <Texture.h>
 #include <TextureManager.h>
 #include <SpriteComponent.h>
+#include <SFSpriteComponent.h>
 #include <RenderManager.h>
 #include <GraphicsDriver.h>
 #include <WindowManager.h>
@@ -25,6 +26,7 @@
 
 #include <SFTextureManager.h>
 #include <SFWindowManager.h>
+
 
 
 

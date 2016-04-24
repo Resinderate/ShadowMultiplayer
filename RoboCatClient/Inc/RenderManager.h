@@ -21,8 +21,9 @@ private:
 
 	//this can't be only place that holds on to component- it has to live inside a GameObject in the world
 	vector< SpriteComponent* >		mComponents;
+	vector<SFSpriteComponent> m_components;
 
-	SDL_Rect						mViewTransform;
+	SDL_Rect mViewTransform;
 
 
 };

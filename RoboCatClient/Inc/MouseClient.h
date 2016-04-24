@@ -9,5 +9,5 @@ protected:
 private:
 
 	SpriteComponentPtr	mSpriteComponent;
-	sf::Sprite m_sprite;
+	SFSpriteComponentPtr m_sprite;
 };
