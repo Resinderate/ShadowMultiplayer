@@ -4,6 +4,8 @@ YarnClient::YarnClient()
 {
 	mSpriteComponent.reset( new SpriteComponent( this ) );
 	mSpriteComponent->SetTexture( TextureManager::sInstance->GetTexture( "yarn" ) );
+
+	m_sprite.setTexture(*SFTextureManager::sInstance->GetTexture("yarn"));
 }
 
 

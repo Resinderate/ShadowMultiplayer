@@ -1,6 +1,7 @@
 #include <RoboCatShared.h>
 
 #include <SDL.h>
+#include "SFML\Graphics.hpp"
 
 #include <InputManager.h>
 
@@ -21,4 +22,9 @@
 #include <ReplicationManagerClient.h>
 #include <NetworkManagerClient.h>
 #include <Client.h>
+
+#include <SFTextureManager.h>
+#include <SFWindowManager.h>
+
+
 

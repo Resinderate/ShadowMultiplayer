@@ -20,6 +20,10 @@ bool Client::StaticInit( )
 	RenderManager::StaticInit();
 	InputManager::StaticInit();
 
+	// New Versions.
+	//SFTextureManager::StaticInit();
+	//SFWindowManager::StaticInit();
+
 	HUD::StaticInit();
 
 	sInstance.reset( client );

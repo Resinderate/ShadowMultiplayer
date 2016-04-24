@@ -16,3 +16,4 @@ private:
 
 
 typedef shared_ptr< Texture >	TexturePtr;
+typedef shared_ptr< sf::Texture >	SFTexturePtr;

@@ -25,4 +25,5 @@ private:
 	float				mTimeVelocityBecameOutOfSync;
 	
 	SpriteComponentPtr	mSpriteComponent;
+	sf::Sprite m_sprite;
 };

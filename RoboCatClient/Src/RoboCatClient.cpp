@@ -8,6 +8,8 @@ RoboCatClient::RoboCatClient() :
 {
 	mSpriteComponent.reset( new SpriteComponent( this ) );
 	mSpriteComponent->SetTexture( TextureManager::sInstance->GetTexture( "cat" ) );
+
+	m_sprite.setTexture(*SFTextureManager::sInstance->GetTexture("cat"));
 }
 
 void RoboCatClient::HandleDying()
