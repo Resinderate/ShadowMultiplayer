@@ -30,3 +30,6 @@
 
 #include <SFTextureManager.h>
 #include <SFWindowManager.h>
+
+#include <SFInputManager.h>
+

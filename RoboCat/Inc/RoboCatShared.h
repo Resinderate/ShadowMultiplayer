@@ -84,3 +84,11 @@ class GameObject;
 #include "ReplicationCommand.h"
 #include "NetworkManager.h"
 #include "Engine.h"
+
+
+#include "SFInputState.h"
+#include "SFMove.h"
+#include "SFMoveList.h"
+#include "SFTiming.h"
+#include "SFEInputAction.h"
+

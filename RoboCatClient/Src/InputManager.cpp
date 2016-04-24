@@ -27,7 +27,7 @@ namespace
 		}
 	}
 
-	inline void UpdateDesireFloatFromKey( EInputAction inInputAction, float& ioVariable )
+	inline void UpdateDesireFloatFromKey(EInputAction inInputAction, float& ioVariable )
 	{
 		if( inInputAction == EIA_Pressed )
 		{
