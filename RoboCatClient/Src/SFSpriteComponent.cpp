@@ -17,3 +17,16 @@ void SFSpriteComponent::SetTexture(SFTexturePtr inTexture)
 {
 	m_sprite.setTexture(*inTexture);
 }
+
+sf::Sprite & SFSpriteComponent::GetSprite()
+{
+	// Update the sprite based on the game object stuff.
+	auto pos = mGameObject->GetLocation();
+	auto rot = RoboMath::ToDegrees(mGameObject->GetRotation());
+	auto size = SFWindowManager::sInstance->getSize();
+	m_sprite.setPosition(pos.mX * size.x, pos.mY * size.y);
+	m_sprite.setRotation(rot);
+
+	
+	return m_sprite;
+}

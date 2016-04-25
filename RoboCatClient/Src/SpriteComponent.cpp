@@ -32,7 +32,9 @@ void SpriteComponent::Draw( const SDL_Rect& inViewTransform )
 
 		// Compute the destination rectangle
 		Vector3 objLocation = mGameObject->GetLocation();
+		Log("Location: " + std::to_string(objLocation.mX) + ", " + std::to_string(objLocation.mY));
 		float objScale = mGameObject->GetScale();
+		Log("Scale: " + std::to_string(objScale));
 		SDL_Rect dstRect;
 		dstRect.w = static_cast< int >( mTexture->GetWidth() * objScale );
 		dstRect.h = static_cast< int >( mTexture->GetHeight() * objScale );

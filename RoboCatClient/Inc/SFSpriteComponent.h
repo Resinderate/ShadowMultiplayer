@@ -7,7 +7,7 @@ public:
 	~SFSpriteComponent();
 
 	void SetTexture(SFTexturePtr inTexture);
-	sf::Sprite& GetSprite() { return m_sprite; }
+	sf::Sprite& GetSprite();
 
 private:
 

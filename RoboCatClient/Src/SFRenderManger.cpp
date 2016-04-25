@@ -55,8 +55,6 @@ void SFRenderManager::RenderComponents()
 {
 	//Get the logical viewport so we can pass this to the SpriteComponents when it's draw time
 
-	Log("Amount of renders: " + std::to_string(mComponents.size()));
-
 	for (auto c : mComponents)
 	{
 		SFWindowManager::sInstance->draw(c->GetSprite());
@@ -71,12 +69,6 @@ void SFRenderManager::Render()
 	SFWindowManager::sInstance->clear(sf::Color::Blue);
 
 	SFRenderManager::sInstance->RenderComponents();
-
-	// Test shape.
-	sf::CircleShape c(50, 20);
-	c.setPosition(100, 100);
-	c.setFillColor(sf::Color::Red);
-	SFWindowManager::sInstance->draw(c);
 
 	//HUD::sInstance->Render();
 
