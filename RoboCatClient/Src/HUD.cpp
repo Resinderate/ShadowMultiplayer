@@ -74,27 +74,5 @@ void HUD::RenderScoreBoard()
 
 void HUD::RenderText( const string& inStr, const Vector3& origin, const Vector3& inColor )
 {
-	// Convert the color
-	SDL_Color color;
-	color.r = static_cast<Uint8>( inColor.mX * 255 );
-	color.g = static_cast<Uint8>( inColor.mY * 255 );
-	color.b = static_cast<Uint8>( inColor.mZ * 255 );
-	color.a = 255;
-
-	// Draw to surface and create a texture
-	SDL_Surface* surface = TTF_RenderText_Blended( mFont, inStr.c_str(), color );
-	SDL_Texture* texture = SDL_CreateTextureFromSurface( GraphicsDriver::sInstance->GetRenderer(), surface );
-
-	// Setup the rect for the texture
-	SDL_Rect dstRect;
-	dstRect.x = static_cast<int>( origin.mX );
-	dstRect.y = static_cast<int>( origin.mY );
-	SDL_QueryTexture( texture, nullptr, nullptr, &dstRect.w, &dstRect.h );
-
-	// Draw the texture
-	SDL_RenderCopy( GraphicsDriver::sInstance->GetRenderer(), texture, nullptr, &dstRect );
-
-	// Destroy the surface/texture
-	SDL_DestroyTexture( texture );
-	SDL_FreeSurface( surface );
+	
 }

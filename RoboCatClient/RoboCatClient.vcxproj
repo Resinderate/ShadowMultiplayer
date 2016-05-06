@@ -26,27 +26,20 @@
     <ClCompile Include="Src\YarnClient.cpp" />
     <ClCompile Include="Src\Client.cpp" />
     <ClCompile Include="Src\ClientMain.cpp" />
-    <ClCompile Include="Src\GraphicsDriver.cpp" />
     <ClCompile Include="Src\HUD.cpp" />
     <ClCompile Include="Src\InputManager.cpp" />
     <ClCompile Include="Src\NetworkManagerClient.cpp" />
-    <ClCompile Include="Src\RenderManager.cpp" />
     <ClCompile Include="Src\ReplicationManagerClient.cpp" />
     <ClCompile Include="Src\RoboCatClient.cpp" />
-    <ClCompile Include="Src\SpriteComponent.cpp" />
-    <ClCompile Include="Src\Texture.cpp" />
-    <ClCompile Include="Src\TextureManager.cpp" />
     <ClCompile Include="Src\MouseClient.cpp" />
     <ClCompile Include="Src\RoboCatClientPCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Src\WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\Client.h" />
     <ClInclude Include="Inc\FontManager.h" />
-    <ClInclude Include="Inc\GraphicsDriver.h" />
     <ClInclude Include="Inc\Log.h" />
     <ClInclude Include="Inc\SFInputManager.h" />
     <ClInclude Include="Inc\SFRenderManager.h" />
@@ -59,13 +52,8 @@
     <ClInclude Include="Inc\ReplicationManagerClient.h" />
     <ClInclude Include="Inc\RoboCatClient.h" />
     <ClInclude Include="Inc\InputManager.h" />
-    <ClInclude Include="Inc\RenderManager.h" />
-    <ClInclude Include="Inc\SpriteComponent.h" />
-    <ClInclude Include="Inc\Texture.h" />
-    <ClInclude Include="Inc\TextureManager.h" />
     <ClInclude Include="Inc\MouseClient.h" />
     <ClInclude Include="Inc\RoboCatClientPCH.h" />
-    <ClInclude Include="Inc\WindowManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5B4C5E90-6135-4E28-8545-FF1CAF5E4971}</ProjectGuid>

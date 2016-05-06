@@ -6,9 +6,6 @@ RoboCatClient::RoboCatClient() :
 	mTimeLocationBecameOutOfSync( 0.f ),
 	mTimeVelocityBecameOutOfSync( 0.f )
 {
-	mSpriteComponent.reset( new SpriteComponent( this ) );
-	mSpriteComponent->SetTexture( TextureManager::sInstance->GetTexture( "cat" ) );
-
 	m_sprite.reset(new SFSpriteComponent(this));
 	m_sprite->SetTexture(SFTextureManager::sInstance->GetTexture("cat"));
 }

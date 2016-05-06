@@ -1,4 +1,8 @@
 #pragma once
+
+typedef shared_ptr< sf::Texture >	SFTexturePtr;
+typedef shared_ptr<sf::Font> FontPtr;
+
 class SFSpriteComponent
 {
 public:

@@ -6,6 +6,7 @@ bool Client::StaticInit( )
 	// Create the Client pointer first because it initializes SDL
 	Client* client = new Client();
 
+	/*
 	if( WindowManager::StaticInit() == false )
 	{
 		return false;
@@ -15,9 +16,10 @@ bool Client::StaticInit( )
 	{
 		return false;
 	}
+	*/
 
-	TextureManager::StaticInit();
-	RenderManager::StaticInit();
+	//TextureManager::StaticInit();
+	//RenderManager::StaticInit();
 	InputManager::StaticInit();
 
 	// New Versions.
@@ -62,7 +64,7 @@ void Client::DoFrame()
 
 	NetworkManagerClient::sInstance->ProcessIncomingPackets();
 
-	RenderManager::sInstance->Render();
+	//RenderManager::sInstance->Render();
 	SFRenderManager::sInstance->Render();
 
 	NetworkManagerClient::sInstance->SendOutgoingPackets();

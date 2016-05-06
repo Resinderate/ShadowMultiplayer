@@ -7,7 +7,5 @@ protected:
 	MouseClient();
 
 private:
-
-	SpriteComponentPtr	mSpriteComponent;
 	SFSpriteComponentPtr m_sprite;
 };

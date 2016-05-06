@@ -10,7 +10,5 @@ protected:
 	YarnClient();
 
 private:
-
-	SpriteComponentPtr	mSpriteComponent;
 	SFSpriteComponentPtr m_sprite;
 };

@@ -2,9 +2,6 @@
 
 YarnClient::YarnClient()
 {
-	mSpriteComponent.reset( new SpriteComponent( this ) );
-	mSpriteComponent->SetTexture( TextureManager::sInstance->GetTexture( "yarn" ) );
-
 	m_sprite.reset(new SFSpriteComponent(this));
 	m_sprite->SetTexture(SFTextureManager::sInstance->GetTexture("yarn"));
 }
@@ -58,7 +55,8 @@ bool YarnClient::HandleCollisionWithCat( RoboCat* inCat )
 {
 	if( GetPlayerId() != inCat->GetPlayerId() )
 	{
-		RenderManager::sInstance->RemoveComponent( mSpriteComponent.get() );
+		//RenderManager::sInstance->RemoveComponent( mSpriteComponent.get() );
+		// Could do a SFML version here if needed.
 	}
 	return false;
 }

@@ -19,7 +19,8 @@ mShouldKeepRunning( true )
 
 	ScoreBoardManager::StaticInit();
 
-	SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO );
+	// Didn't seem to have any effect turning it off by itself.
+	//SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO );
 }
 
 Engine::~Engine()

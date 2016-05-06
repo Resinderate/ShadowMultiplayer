@@ -8,14 +8,11 @@
 
 #include <InputManager.h>
 
-#include <Texture.h>
-#include <TextureManager.h>
-#include <SpriteComponent.h>
 #include <SFSpriteComponent.h>
-#include <RenderManager.h>
 #include <SFRenderManager.h>
-#include <GraphicsDriver.h>
-#include <WindowManager.h>
+#include <SFTextureManager.h>
+#include <SFWindowManager.h>
+#include "FontManager.h"
 
 #include <RoboCatClient.h>
 #include <MouseClient.h>
@@ -23,14 +20,8 @@
 
 #include <HUD.h>
 
-
 #include <ReplicationManagerClient.h>
 #include <NetworkManagerClient.h>
 #include <Client.h>
 
-#include <SFTextureManager.h>
-#include <SFWindowManager.h>
-#include "FontManager.h"
-
 #include <SFInputManager.h>
-
