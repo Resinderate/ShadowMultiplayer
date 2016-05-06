@@ -12,6 +12,7 @@ SFTextureManager::SFTextureManager()
 	CacheTexture("cat", "../Assets/cat.png");
 	CacheTexture("mouse", "../Assets/mouse.png");
 	CacheTexture("yarn", "../Assets/yarn.png");
+	CacheTexture("hitman", "../Assets/hitman.png");
 }
 
 SFTexturePtr SFTextureManager::GetTexture(const string & inTextureName)

@@ -7,7 +7,7 @@ RoboCatClient::RoboCatClient() :
 	mTimeVelocityBecameOutOfSync( 0.f )
 {
 	m_sprite.reset(new SFSpriteComponent(this));
-	m_sprite->SetTexture(SFTextureManager::sInstance->GetTexture("cat"));
+	m_sprite->SetTexture(SFTextureManager::sInstance->GetTexture("hitman"));
 }
 
 void RoboCatClient::HandleDying()

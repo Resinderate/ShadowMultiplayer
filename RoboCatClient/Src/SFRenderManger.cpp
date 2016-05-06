@@ -26,8 +26,8 @@ void SFRenderManager::RenderUI()
 	//Scoreboard.setCharacterSize(24);
 	//Health.setCharacterSize(24);
 	
-	RTT.setColor(sf::Color::White);
-	InOut.setColor(sf::Color::White);
+	RTT.setColor(sf::Color::Black);
+	InOut.setColor(sf::Color::Black);
 	//Scoreboard.setColor(sf::Color::White);
 	//Health.setColor(sf::Color::Black);
 
@@ -114,7 +114,7 @@ void SFRenderManager::Render()
 	//
 	// Clear the back buffer
 	//
-	SFWindowManager::sInstance->clear(sf::Color::Blue);
+	SFWindowManager::sInstance->clear(sf::Color::White);
 
 	SFRenderManager::sInstance->RenderComponents();
 
