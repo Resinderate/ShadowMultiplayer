@@ -1,5 +1,14 @@
 #include "RoboCatPCH.h"
 
+std::unique_ptr<ShadowFactory> ShadowFactory::sInstance;
+
+void ShadowFactory::StaticInit()
+{
+	ShadowFactory* sf = new ShadowFactory();
+	sf->load();
+	sInstance.reset(sf);
+}
+
 std::vector<sf::VertexArray> ShadowFactory::getShadows(sf::Vector2f playerPosition, sf::Color color)
 {
 	auto lines = getShadowLines();
@@ -40,10 +49,10 @@ std::vector<sf::VertexArray> ShadowFactory::getShadows(sf::Vector2f playerPositi
 bool ShadowFactory::load()
 {
 	// Might be able to perform some optimizations here.
-	float rectSize = 16;
+	float rectSize = 64;
 
 	sf::Image map;
-	if (!map.loadFromFile("maps/shadowmap.png"))
+	if (!map.loadFromFile("../Assets/maps/map.png"))
 		return false;
 
 
