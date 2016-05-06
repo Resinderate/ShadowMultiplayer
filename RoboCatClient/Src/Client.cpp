@@ -67,18 +67,23 @@ void Client::DoFrame()
 	NetworkManagerClient::sInstance->SendOutgoingPackets();
 }
 
-void Client::HandleEvent( SDL_Event* inEvent )
+void Client::HandleEvent(sf::Event &p_event)
 {
-	switch( inEvent->type )
+	switch (p_event.type)
 	{
-	case SDL_KEYDOWN:
-		InputManager::sInstance->HandleInput( EIA_Pressed, inEvent->key.keysym.sym );
+	case sf::Event::KeyPressed:
+		InputManager::sInstance->HandleInput(EIA_Pressed, p_event.key.code);
 		break;
-	case SDL_KEYUP:
-		InputManager::sInstance->HandleInput( EIA_Released, inEvent->key.keysym.sym );
+	case sf::Event::KeyReleased:
+		InputManager::sInstance->HandleInput(EIA_Released, p_event.key.code);
 		break;
 	default:
 		break;
 	}
+}
+
+bool Client::PullEvent(sf::Event &p_event)
+{
+	return SFWindowManager::sInstance->pollEvent(p_event);
 }
 

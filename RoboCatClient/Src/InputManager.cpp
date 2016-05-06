@@ -44,19 +44,19 @@ void InputManager::HandleInput( EInputAction inInputAction, int inKeyCode )
 {
 	switch( inKeyCode )
 	{
-	case 'a':
+	case sf::Keyboard::A:
 		UpdateDesireFloatFromKey( inInputAction, mCurrentState.mDesiredLeftAmount );
 		break;
-	case 'd':
+	case sf::Keyboard::D:
 		UpdateDesireFloatFromKey( inInputAction, mCurrentState.mDesiredRightAmount );
 		break;
-	case 'w':
+	case sf::Keyboard::W:
 		UpdateDesireFloatFromKey( inInputAction, mCurrentState.mDesiredForwardAmount );
 		break;
-	case 's':
+	case sf::Keyboard::S:
 		UpdateDesireFloatFromKey( inInputAction, mCurrentState.mDesiredBackAmount );
 		break;
-	case 'k':
+	case sf::Keyboard::K:
 		UpdateDesireVariableFromKey( inInputAction, mCurrentState.mIsShooting );
 		break;
 	}

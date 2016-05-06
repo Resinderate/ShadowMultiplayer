@@ -47,6 +47,9 @@ using std::unordered_set;
 class RoboCat;
 class GameObject;
 
+#include "SFML\System.hpp"
+#include "SFML\Window.hpp"
+
 #include "RoboMath.h"
 
 #include "StringUtils.h"
@@ -91,5 +94,3 @@ class GameObject;
 #include "SFMoveList.h"
 #include "SFTiming.h"
 #include "SFEInputAction.h"
-
-#include "SFML\Window.hpp"

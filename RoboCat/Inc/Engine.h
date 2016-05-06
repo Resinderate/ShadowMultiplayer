@@ -9,7 +9,8 @@ public:
 
 	virtual int		Run();
 	void			SetShouldKeepRunning( bool inShouldKeepRunning ) { mShouldKeepRunning = inShouldKeepRunning; }
-	virtual void	HandleEvent( SDL_Event* inEvent );
+	virtual void	HandleEvent(sf::Event &p_event);
+	virtual bool	PullEvent(sf::Event &p_event);
 
 protected:
 

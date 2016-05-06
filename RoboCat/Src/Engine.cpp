@@ -37,51 +37,44 @@ int Engine::Run()
 	return DoRunLoop();
 }
 
-void Engine::HandleEvent( SDL_Event* inEvent )
+void Engine::HandleEvent( sf::Event &p_event )
 {
 	// Default implementation does nothing, up to derived classes to handle them, if they so choose
-	( void )inEvent;
+	( void )p_event;
+}
+
+bool Engine::PullEvent(sf::Event &p_event)
+{
+	return false;
 }
 
 int Engine::DoRunLoop()
 {
 	// Main message loop
 	bool quit = false;
-	SDL_Event event;
-	memset( &event, 0, sizeof( SDL_Event ) );
 
 	sf::Event eve;
 
 	while (!quit && mShouldKeepRunning)
 	{
-		while (SFWindowManager::window.pollEvent(event))
+		while (PullEvent(eve))
 		{
-
-		}
-	}
-
-	while( !quit && mShouldKeepRunning )
-	{
-		if( SDL_PollEvent( &event ) )
-		{
-			if( event.type == SDL_QUIT )
+			if (eve.type == sf::Event::Closed)
 			{
 				quit = true;
 			}
 			else
 			{
-				HandleEvent( &event );
+				HandleEvent(eve);
 			}
 		}
-		else
-		{
-			Timing::sInstance.Update();
 
-			DoFrame();
-		}
+		Timing::sInstance.Update();
+
+		DoFrame();
 	}
 
-	return event.type;
+	return eve.type;
 }
 
 void Engine::DoFrame()
