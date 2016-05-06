@@ -2,7 +2,7 @@
 
 GameObject::GameObject() :
 	mIndexInWorld( -1 ),
-	mCollisionRadius( 0.5f ),
+	mCollisionRadius( 1.f ),
 	mDoesWantToDie( false ),
 	mRotation( 0.f ),
 	mNetworkId( 0 ),

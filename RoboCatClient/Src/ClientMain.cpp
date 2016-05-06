@@ -7,8 +7,6 @@ int WINAPI WinMain( _In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
 {
 	UNREFERENCED_PARAMETER( hPrevInstance );
 	UNREFERENCED_PARAMETER( lpCmdLine );
-
-	sf::RenderWindow w(sf::VideoMode(200, 200), "Shadow");
 	
 	if( Client::StaticInit() )
 	{

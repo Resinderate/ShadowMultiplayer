@@ -45,7 +45,7 @@ Client::Client()
 
 	NetworkManagerClient::StaticInit( *serverAddress, name );
 
-	//NetworkManagerClient::sInstance->SetDropPacketChance( 0.6f );
+	//NetworkManagerClient::sInstance->Set#PacketChance( 0.6f );
 	//NetworkManagerClient::sInstance->SetSimulatedLatency( 0.25f );
 	//NetworkManagerClient::sInstance->SetSimulatedLatency( 0.5f );
 	//NetworkManagerClient::sInstance->SetSimulatedLatency( 0.1f );

@@ -82,9 +82,4 @@ void RenderManager::Render()
     // Present our back buffer to our front buffer
     //
 	GraphicsDriver::sInstance->Present();
-
-	for (auto i : World::sInstance->GetGameObjects())
-	{
-	}
-
 }

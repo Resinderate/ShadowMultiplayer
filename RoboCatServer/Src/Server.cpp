@@ -50,8 +50,8 @@ namespace
 	
 	void CreateRandomMice( int inMouseCount )
 	{
-		Vector3 mouseMin( -5.f, -3.f, 0.f );
-		Vector3 mouseMax( 5.f, 3.f, 0.f );
+		Vector3 mouseMin( 0.f, 0.f, 0.f );
+		Vector3 mouseMax(1280.f, 720.f, 0.f );
 		GameObjectPtr go;
 
 		//make a mouse somewhere- where will these come from?
@@ -73,7 +73,7 @@ void Server::SetupWorld()
 	CreateRandomMice( 10 );
 	
 	//spawn more random mice!
-	CreateRandomMice( 10 );
+	//CreateRandomMice( 10 );
 }
 
 void Server::DoFrame()
@@ -105,7 +105,7 @@ void Server::SpawnCatForPlayer( int inPlayerId )
 	cat->SetColor( ScoreBoardManager::sInstance->GetEntry( inPlayerId )->GetColor() );
 	cat->SetPlayerId( inPlayerId );
 	//gotta pick a better spawn location than this...
-	cat->SetLocation( Vector3( 1.f - static_cast< float >( inPlayerId ), 0.f, 0.f ) );
+	cat->SetLocation( Vector3( 50.f, 50.f, 0.f ) );
 
 }
 

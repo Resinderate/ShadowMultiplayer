@@ -50,6 +50,16 @@ int Engine::DoRunLoop()
 	SDL_Event event;
 	memset( &event, 0, sizeof( SDL_Event ) );
 
+	sf::Event eve;
+
+	while (!quit && mShouldKeepRunning)
+	{
+		while (SFWindowManager::window.pollEvent(event))
+		{
+
+		}
+	}
+
 	while( !quit && mShouldKeepRunning )
 	{
 		if( SDL_PollEvent( &event ) )

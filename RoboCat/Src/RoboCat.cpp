@@ -7,7 +7,7 @@ const float HALF_WORLD_WIDTH = 6.4f;
 RoboCat::RoboCat() :
 	GameObject(),
 	mMaxRotationSpeed( 5.f ),
-	mMaxLinearSpeed( 50.f ),
+	mMaxLinearSpeed( 5000.f ),
 	mVelocity( Vector3::Zero ),
 	mWallRestitution( 0.1f ),
 	mCatRestitution( 0.1f ),
@@ -16,7 +16,7 @@ RoboCat::RoboCat() :
 	mIsShooting( false ),
 	mHealth( 10 )
 {
-	SetCollisionRadius( 0.5f );
+	SetCollisionRadius( 60.f );
 }
 
 void RoboCat::ProcessInput( float inDeltaTime, const InputState& inInputState )
@@ -63,7 +63,7 @@ void RoboCat::Update()
 void RoboCat::ProcessCollisions()
 {
 	//right now just bounce off the sides..
-	ProcessCollisionsWithScreenWalls();
+	//ProcessCollisionsWithScreenWalls();
 
 	float sourceRadius = GetCollisionRadius();
 	Vector3 sourceLocation = GetLocation();

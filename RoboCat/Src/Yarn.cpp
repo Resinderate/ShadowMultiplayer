@@ -6,7 +6,7 @@ Yarn::Yarn() :
 	mPlayerId( 0 )
 {
 	SetScale( GetScale() * 0.25f );
-	SetCollisionRadius( 0.125f );
+	SetCollisionRadius( 15.f );
 }
 
 

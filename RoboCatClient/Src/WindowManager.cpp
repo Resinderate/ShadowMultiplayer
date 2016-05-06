@@ -21,7 +21,6 @@ bool WindowManager::StaticInit()
 WindowManager::WindowManager( SDL_Window* inMainWindow )
 {
 	mMainWindow = inMainWindow;	
-
 }
 
 WindowManager::~WindowManager()

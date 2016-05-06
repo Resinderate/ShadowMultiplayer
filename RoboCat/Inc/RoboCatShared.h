@@ -92,3 +92,4 @@ class GameObject;
 #include "SFTiming.h"
 #include "SFEInputAction.h"
 
+#include "SFML\Window.hpp"
