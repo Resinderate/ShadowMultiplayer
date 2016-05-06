@@ -78,6 +78,9 @@
     <ClCompile Include="Src\SFInputManager.cpp">
       <Filter>Src</Filter>
     </ClCompile>
+    <ClCompile Include="Src\FontManger.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\RoboCatClientPCH.h">
@@ -141,6 +144,9 @@
       <Filter>Inc</Filter>
     </ClInclude>
     <ClInclude Include="Inc\SFInputManager.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\FontManager.h">
       <Filter>Inc</Filter>
     </ClInclude>
   </ItemGroup>

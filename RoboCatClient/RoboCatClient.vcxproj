@@ -16,6 +16,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\FontManger.cpp" />
     <ClCompile Include="Src\Log.cpp" />
     <ClCompile Include="Src\SFInputManager.cpp" />
     <ClCompile Include="Src\SFRenderManger.cpp" />
@@ -44,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\Client.h" />
+    <ClInclude Include="Inc\FontManager.h" />
     <ClInclude Include="Inc\GraphicsDriver.h" />
     <ClInclude Include="Inc\Log.h" />
     <ClInclude Include="Inc\SFInputManager.h" />
