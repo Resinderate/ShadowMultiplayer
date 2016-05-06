@@ -24,6 +24,7 @@ bool Client::StaticInit( )
 	SFWindowManager::StaticInit();
 	SFTextureManager::StaticInit();
 	SFRenderManager::StaticInit();
+	FontManager::StaticInit();
 
 	HUD::StaticInit();
 

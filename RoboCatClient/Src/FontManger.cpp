@@ -9,7 +9,7 @@ void FontManager::StaticInit()
 
 FontManager::FontManager()
 {
-	CacheFont("asd", "../Assets/cat.png");
+	CacheFont("bebas", "../Assets/BebasNeue.OTF");
 }
 
 FontPtr FontManager::GetFont(const string & p_fontName)
