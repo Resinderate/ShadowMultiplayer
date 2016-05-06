@@ -71,6 +71,7 @@ void SFRenderManager::Render()
 	SFRenderManager::sInstance->RenderComponents();
 
 	//HUD::sInstance->Render();
+	// Might draw the UI elements in a different way. Could make a function in Render Manager to take care of it.
 
 	//
 	// Present our back buffer to our front buffer
