@@ -124,6 +124,18 @@
     <ClInclude Include="Inc\SFTiming.h">
       <Filter>Inc</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\Line.hpp">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\Trigonometry.hpp">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\VectorAlgebra2D.hpp">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\ShadowFactory.hpp">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\GameObject.cpp">
@@ -213,5 +225,19 @@
     <ClCompile Include="Src\SFTiming.cpp">
       <Filter>Src</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Line.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Trigonometry.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ShadowFactory.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Src\VectorAlgebra2D.inl">
+      <Filter>Src</Filter>
+    </None>
   </ItemGroup>
 </Project>

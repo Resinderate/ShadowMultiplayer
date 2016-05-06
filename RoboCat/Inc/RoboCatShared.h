@@ -32,6 +32,7 @@
 #include "queue"
 #include "deque"
 #include "unordered_set"
+#include <cmath>
 #include "cassert"
 
 using std::shared_ptr;
@@ -49,6 +50,7 @@ class GameObject;
 
 #include "SFML\System.hpp"
 #include "SFML\Window.hpp"
+#include "SFML\Graphics.hpp"
 
 #include "RoboMath.h"
 
@@ -94,3 +96,8 @@ class GameObject;
 #include "SFMoveList.h"
 #include "SFTiming.h"
 #include "SFEInputAction.h"
+
+#include "Trigonometry.hpp"
+#include "VectorAlgebra2D.hpp"
+#include "Line.hpp"
+#include "ShadowFactory.hpp"

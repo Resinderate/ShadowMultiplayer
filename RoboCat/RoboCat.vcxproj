@@ -371,11 +371,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Inc\AckRange.h" />
+    <ClInclude Include="Inc\Line.hpp" />
     <ClInclude Include="Inc\SFEInputAction.h" />
     <ClInclude Include="Inc\SFInputState.h" />
     <ClInclude Include="Inc\SFMove.h" />
     <ClInclude Include="Inc\SFMoveList.h" />
     <ClInclude Include="Inc\SFTiming.h" />
+    <ClInclude Include="Inc\ShadowFactory.hpp" />
+    <ClInclude Include="Inc\Trigonometry.hpp" />
+    <ClInclude Include="Inc\VectorAlgebra2D.hpp" />
     <ClInclude Include="Inc\Yarn.h" />
     <ClInclude Include="Inc\ByteSwap.h" />
     <ClInclude Include="Inc\DeliveryNotificationManager.h" />
@@ -408,10 +412,13 @@
     <ClInclude Include="Inc\WeightedTimedMovingAverage.h" />
     <ClInclude Include="Inc\World.h" />
     <ClCompile Include="Src\AckRange.cpp" />
+    <ClCompile Include="Src\Line.cpp" />
     <ClCompile Include="Src\SFInputState.cpp" />
     <ClCompile Include="Src\SFMove.cpp" />
     <ClCompile Include="Src\SFMoveList.cpp" />
     <ClCompile Include="Src\SFTiming.cpp" />
+    <ClCompile Include="Src\ShadowFactory.cpp" />
+    <ClCompile Include="Src\Trigonometry.cpp" />
     <ClCompile Include="Src\Yarn.cpp" />
     <ClCompile Include="Src\DeliveryNotificationManager.cpp" />
     <ClCompile Include="Src\Engine.cpp" />
@@ -449,6 +456,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">RoboCatPCH.h</PrecompiledHeaderFile>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Src\VectorAlgebra2D.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
