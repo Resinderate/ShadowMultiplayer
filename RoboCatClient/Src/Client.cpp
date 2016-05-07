@@ -10,11 +10,13 @@ bool Client::StaticInit( )
 
 	// New Versions.
 	// Window manager needs to be initialized before RenderManager.
+	// TextureManager before TexturedWorld
 	SFWindowManager::StaticInit();
 	SFTextureManager::StaticInit();
 	SFRenderManager::StaticInit();
 	FontManager::StaticInit();
 	ShadowFactory::StaticInit();
+	TexturedWorld::StaticInit();
 
 	HUD::StaticInit();
 

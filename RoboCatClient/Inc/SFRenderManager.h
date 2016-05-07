@@ -23,6 +23,7 @@ private:
 	void RenderUI();
 	void RenderShadows();
 	void UpdateView();
+	void RenderTexturedWorld();
 
 	sf::Vector2f FindCatCentre();
 

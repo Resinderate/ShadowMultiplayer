@@ -77,6 +77,14 @@ void SFRenderManager::UpdateView()
 	SFWindowManager::sInstance->setView(view);
 }
 
+void SFRenderManager::RenderTexturedWorld()
+{
+	for (auto spr : TexturedWorld::sInstance->getTexturedWorld())
+	{
+		SFWindowManager::sInstance->draw(spr);
+	}
+}
+
 // Way of finding this clients cat, and then centre point. - Ronan
 sf::Vector2f SFRenderManager::FindCatCentre()
 {
@@ -161,6 +169,8 @@ void SFRenderManager::Render()
 
 	// Clear the back buffer
 	SFWindowManager::sInstance->clear(sf::Color::White);
+
+	SFRenderManager::sInstance->RenderTexturedWorld();
 
 	SFRenderManager::sInstance->RenderComponents();
 

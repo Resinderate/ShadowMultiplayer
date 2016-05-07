@@ -23,3 +23,5 @@
 #include <ReplicationManagerClient.h>
 #include <NetworkManagerClient.h>
 #include <Client.h>
+
+#include "TexturedWorld.hpp"
