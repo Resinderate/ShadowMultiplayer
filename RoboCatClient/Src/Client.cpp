@@ -9,6 +9,7 @@ bool Client::StaticInit( )
 	InputManager::StaticInit();
 
 	// New Versions.
+	// Window manager needs to be initialized before RenderManager.
 	SFWindowManager::StaticInit();
 	SFTextureManager::StaticInit();
 	SFRenderManager::StaticInit();
