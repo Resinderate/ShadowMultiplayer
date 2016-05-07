@@ -219,45 +219,6 @@ void RoboCat::ProcessCollisions()
 
 }
 
-void RoboCat::ProcessCollisionsWithScreenWalls()
-{
-	Vector3 location = GetLocation();
-	float x = location.mX;
-	float y = location.mY;
-
-	float vx = mVelocity.mX;
-	float vy = mVelocity.mY;
-
-	float radius = GetCollisionRadius();
-
-	//if the cat collides against a wall, the quick solution is to push it off
-	if( ( y + radius ) >= HALF_WORLD_HEIGHT && vy > 0 )
-	{
-		mVelocity.mY = -vy * mWallRestitution;
-		location.mY = HALF_WORLD_HEIGHT - radius;
-		SetLocation( location );
-	}
-	else if( y <= ( -HALF_WORLD_HEIGHT - radius ) && vy < 0 )
-	{
-		mVelocity.mY = -vy * mWallRestitution;
-		location.mY = -HALF_WORLD_HEIGHT - radius;
-		SetLocation( location );
-	}
-
-	if( ( x + radius ) >= HALF_WORLD_WIDTH && vx > 0 )
-	{
-		mVelocity.mX = -vx * mWallRestitution;
-		location.mX = HALF_WORLD_WIDTH - radius;
-		SetLocation( location );
-	}
-	else if(  x <= ( -HALF_WORLD_WIDTH - radius ) && vx < 0 )
-	{
-		mVelocity.mX = -vx * mWallRestitution;
-		location.mX = -HALF_WORLD_WIDTH - radius;
-		SetLocation( location );
-	}
-}
-
 uint32_t RoboCat::Write( OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState ) const
 {
 	uint32_t writtenState = 0;

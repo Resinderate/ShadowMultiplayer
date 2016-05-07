@@ -26,7 +26,6 @@ public:
 	void SimulateMovement( float inDeltaTime );
 
 	void ProcessCollisions();
-	void ProcessCollisionsWithScreenWalls();
 
 	void		SetPlayerId( uint32_t inPlayerId )			{ mPlayerId = inPlayerId; }
 	uint32_t	GetPlayerId()						const 	{ return mPlayerId; }
