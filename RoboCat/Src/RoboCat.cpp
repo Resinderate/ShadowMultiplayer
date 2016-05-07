@@ -11,7 +11,7 @@ RoboCat::RoboCat() :
 	mVelocity( Vector3::Zero ),
 	mWallRestitution( 0.1f ),
 	mCatRestitution( 0.1f ),
-	mThrustDir( 0.f ),
+	mThrustDir( sf::Vector2f(0.f, 0.f) ),
 	mPlayerId( 0 ),
 	mIsShooting( false ),
 	mHealth( 10 )
@@ -23,16 +23,55 @@ void RoboCat::ProcessInput( float inDeltaTime, const InputState& inInputState )
 {
 	//process our input....
 
+	int rot = -1;
+	int W = 0;
+	int NW = 45;
+	int N = 90;
+	int NE = 135;
+	int E = 180;
+	int SE = 225;
+	int S = 270;
+	int SW = 315;
+
+
 	//turning...
-	float newRotation = GetRotation() + inInputState.GetDesiredHorizontalDelta() * mMaxRotationSpeed * inDeltaTime;
-	SetRotation( newRotation );
+	//float newRotation = GetRotation() + inInputState.GetDesiredHorizontalDelta() * mMaxRotationSpeed * inDeltaTime;
+	//SetRotation( newRotation );
 
-	//moving...
+	////moving...
+	//float inputForwardDelta = inInputState.GetDesiredVerticalDelta();
+	//mThrustDir = inputForwardDelta;
+
+	float inputHorizontalDelta = inInputState.GetDesiredHorizontalDelta();
+	mThrustDir.x = inputHorizontalDelta;
 	float inputForwardDelta = inInputState.GetDesiredVerticalDelta();
-	mThrustDir = inputForwardDelta;
+	mThrustDir.y = -inputForwardDelta;
 
+	
+	if (mThrustDir.x == 1 && mThrustDir.y == 1)
+		rot = NE;
+	else if (mThrustDir.x == 1 && mThrustDir.y == -1)
+		rot = NW;
+	else if (mThrustDir.x == -1 && mThrustDir.y == 1)
+		rot = SE;
+	else if (mThrustDir.x == -1 && mThrustDir.y == -1)
+		rot = SW;
+	else if (mThrustDir.x == 1 && mThrustDir.y == 0)
+		rot = N;
+	else if (mThrustDir.x == -1 && mThrustDir.y == 0)
+		rot = S;
+	else if (mThrustDir.x == 0 && mThrustDir.y == 1)
+		rot = E;
+	else if (mThrustDir.x == 0 && mThrustDir.y == -1)
+		rot = W;
+
+	if (rot != -1)
+		SetRotation(rot);
 
 	mIsShooting = inInputState.IsShooting(); 
+
+
+
 
 }
 
@@ -41,7 +80,8 @@ void RoboCat::AdjustVelocityByThrust( float inDeltaTime )
 	//just set the velocity based on the thrust direction -- no thrust will lead to 0 velocity
 	//simulating acceleration makes the client prediction a bit more complex
 	Vector3 forwardVector = GetForwardVector();
-	mVelocity = forwardVector * ( mThrustDir * inDeltaTime * mMaxLinearSpeed );
+	//mVelocity = forwardVector * (mThrustDir * inDeltaTime * mMaxLinearSpeed);
+	mVelocity = Vector3(GetForwardVector().mX + (mThrustDir.x * inDeltaTime * mMaxLinearSpeed), GetForwardVector().mY + (mThrustDir.y * inDeltaTime * mMaxLinearSpeed), GetForwardVector().mZ);
 }
 
 void RoboCat::SimulateMovement( float inDeltaTime )
@@ -237,10 +277,11 @@ uint32_t RoboCat::Write( OutputMemoryBitStream& inOutputStream, uint32_t inDirty
 	}
 
 	//always write mThrustDir- it's just two bits
-	if( mThrustDir != 0.f )
+	if( mThrustDir != sf::Vector2f(0.f,0.f))
 	{
 		inOutputStream.Write( true );
-		inOutputStream.Write( mThrustDir > 0.f );
+		inOutputStream.Write(mThrustDir.x > 0.f);
+		inOutputStream.Write(mThrustDir.y > 0.f);
 	}
 	else
 	{
