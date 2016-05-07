@@ -9,6 +9,8 @@ bool Server::StaticInit()
 {
 	sInstance.reset( new Server() );
 
+	ShadowFactory::StaticInit();
+
 	return true;
 }
 

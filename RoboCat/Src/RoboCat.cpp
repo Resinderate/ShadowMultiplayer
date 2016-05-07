@@ -49,15 +49,38 @@ void RoboCat::SimulateMovement( float inDeltaTime )
 	//simulate us...
 	AdjustVelocityByThrust( inDeltaTime );
 
+	// Replace with a "TryMove" that preemptively checks for collisions.
+	TryMove(mVelocity * inDeltaTime);
+	//SetLocation( GetLocation() + mVelocity * inDeltaTime );
 
-	SetLocation( GetLocation() + mVelocity * inDeltaTime );
-
+	// Will encompass the collisions with everything except the walls.
 	ProcessCollisions();
 }
 
 void RoboCat::Update()
 {
 	
+}
+
+void RoboCat::TryMove(Vector3 p_move)
+{
+	// SetLocation() to update location.
+	sf::Vector2f move(p_move.mX, p_move.mY);
+	
+	// Make a collision box in here for the player, square around the player.
+	float size = 25;
+	// Position at the centre of the player.
+	Vector3 playerPosition = GetLocation();
+	sf::FloatRect player(playerPosition.mX - (size / 2), playerPosition.mY - (size / 2), size, size);
+
+	player.left += move.x;
+	player.top += move.y;
+
+	if (!ShadowFactory::sInstance->doesCollideWithWorld(player))
+	{
+		SetLocation(playerPosition + p_move);
+	}
+	// Move checks for single dimension movement.
 }
 
 void RoboCat::ProcessCollisions()

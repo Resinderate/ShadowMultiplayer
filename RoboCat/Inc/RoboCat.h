@@ -41,6 +41,8 @@ protected:
 
 private:
 
+	void TryMove(Vector3 p_move);
+
 
 	void	AdjustVelocityByThrust( float inDeltaTime );
 
