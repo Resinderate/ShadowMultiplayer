@@ -20,7 +20,9 @@ Server::Server()
 	GameObjectRegistry::sInstance->RegisterCreationFunction( 'YARN', YarnServer::StaticCreate );
 
 	InitNetworkManager();
-	
+
+	TimeBetweenSpawns = 5.f;
+	SpawnTime = 0.f;
 	//NetworkManagerServer::sInstance->SetDropPacketChance( 0.8f );
 	//NetworkManagerServer::sInstance->SetSimulatedLatency( 0.25f );
 	//NetworkManagerServer::sInstance->SetSimulatedLatency( 0.5f );
@@ -65,7 +67,15 @@ namespace
 
 
 }
-
+void Server::PickupUpdate()
+{
+	float time = Timing::sInstance.GetFrameStartTime();
+	if (Timing::sInstance.GetFrameStartTime() > SpawnTime)
+	{
+		SpawnTime = time + TimeBetweenSpawns;
+		CreateRandomMice(1);
+	}
+}
 
 void Server::SetupWorld()
 {
@@ -87,7 +97,8 @@ void Server::DoFrame()
 	Engine::DoFrame();
 
 	NetworkManagerServer::sInstance->SendOutgoingPackets();
-
+	
+	this->PickupUpdate();
 }
 
 void Server::HandleNewClient( ClientProxyPtr inClientProxy )

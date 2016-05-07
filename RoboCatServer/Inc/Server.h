@@ -17,8 +17,10 @@ public:
 
 private:
 	Server();
-
+	float   TimeBetweenSpawns;
+	float	SpawnTime;
 	bool	InitNetworkManager();
+	void	PickupUpdate();
 	void	SetupWorld();
 
 };
