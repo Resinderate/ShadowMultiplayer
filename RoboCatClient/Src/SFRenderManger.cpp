@@ -55,6 +55,39 @@ void SFRenderManager::RenderUI()
 
 }
 
+void SFRenderManager::RenderShadows()
+{
+	sf::Vector2f player = FindCatCentre();
+	auto shadows = ShadowFactory::sInstance->getShadows(player, sf::Color::Black);
+	for (auto s : shadows)
+	{
+		SFWindowManager::sInstance->draw(s);
+	}
+}
+
+// Way of finding this clients cat, and then centre point. - Ronan
+sf::Vector2f SFRenderManager::FindCatCentre()
+{
+	uint32_t catID = (uint32_t)'RCAT';
+	for (auto obj : World::sInstance->GetGameObjects())
+	{
+		// Find a cat.
+		if (obj->GetClassId() == catID)
+		{
+			RoboCat *cat = dynamic_cast<RoboCat*>(obj.get());
+			auto id = cat->GetPlayerId();
+			auto ourID = NetworkManagerClient::sInstance->GetPlayerId();
+			if (id == ourID)
+			{
+				// If so grab the centre point.
+				auto centre = cat->GetLocation();
+				return sf::Vector2f(centre.mX, centre.mY);
+			}
+		}
+	}
+	return sf::Vector2f();
+}
+
 
 void SFRenderManager::StaticInit()
 {
@@ -121,6 +154,9 @@ void SFRenderManager::Render()
 	//HUD::sInstance->Render();
 	// Might draw the UI elements in a different way. Could make a function in Render Manager to take care of it.
 	SFRenderManager::sInstance->RenderUI();
+
+	// Draw shadows
+	RenderShadows();
 
 	//
 	// Present our back buffer to our front buffer
