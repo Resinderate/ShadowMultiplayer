@@ -32,7 +32,7 @@ void SFRenderManager::RenderUI()
 	RTT.setColor(sf::Color::Red);
 	InOut.setColor(sf::Color::Red);
 	//Scoreboard.setColor(sf::Color::White);
-	Health.setColor(sf::Color::Black);
+	Health.setColor(sf::Color::Red);
 
 	// RTT
 	float rttMS = NetworkManagerClient::sInstance->GetAvgRoundTripTime().GetValue() * 1000.f;
