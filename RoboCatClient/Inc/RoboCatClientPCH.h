@@ -24,4 +24,4 @@
 #include <NetworkManagerClient.h>
 #include <Client.h>
 
-#include <SFInputManager.h>
+#include "TexturedWorld.hpp"

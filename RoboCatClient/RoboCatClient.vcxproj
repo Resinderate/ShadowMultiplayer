@@ -18,11 +18,11 @@
   <ItemGroup>
     <ClCompile Include="Src\FontManger.cpp" />
     <ClCompile Include="Src\Log.cpp" />
-    <ClCompile Include="Src\SFInputManager.cpp" />
     <ClCompile Include="Src\SFRenderManger.cpp" />
     <ClCompile Include="Src\SFSpriteComponent.cpp" />
     <ClCompile Include="Src\SFTextureManager.cpp" />
     <ClCompile Include="Src\SFWindowManager.cpp" />
+    <ClCompile Include="Src\TexturedWorld.cpp" />
     <ClCompile Include="Src\YarnClient.cpp" />
     <ClCompile Include="Src\Client.cpp" />
     <ClCompile Include="Src\ClientMain.cpp" />
@@ -41,11 +41,11 @@
     <ClInclude Include="Inc\Client.h" />
     <ClInclude Include="Inc\FontManager.h" />
     <ClInclude Include="Inc\Log.h" />
-    <ClInclude Include="Inc\SFInputManager.h" />
     <ClInclude Include="Inc\SFRenderManager.h" />
     <ClInclude Include="Inc\SFSpriteComponent.h" />
     <ClInclude Include="Inc\SFTextureManager.h" />
     <ClInclude Include="Inc\SFWindowManager.h" />
+    <ClInclude Include="Inc\TexturedWorld.hpp" />
     <ClInclude Include="Inc\YarnClient.h" />
     <ClInclude Include="Inc\HUD.h" />
     <ClInclude Include="Inc\NetworkManagerClient.h" />

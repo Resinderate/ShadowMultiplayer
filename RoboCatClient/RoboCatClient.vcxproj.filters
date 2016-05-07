@@ -57,10 +57,10 @@
     <ClCompile Include="Src\Log.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClCompile Include="Src\SFInputManager.cpp">
+    <ClCompile Include="Src\FontManger.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClCompile Include="Src\FontManger.cpp">
+    <ClCompile Include="Src\TexturedWorld.cpp">
       <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -107,10 +107,10 @@
     <ClInclude Include="Inc\Log.h">
       <Filter>Inc</Filter>
     </ClInclude>
-    <ClInclude Include="Inc\SFInputManager.h">
+    <ClInclude Include="Inc\FontManager.h">
       <Filter>Inc</Filter>
     </ClInclude>
-    <ClInclude Include="Inc\FontManager.h">
+    <ClInclude Include="Inc\TexturedWorld.hpp">
       <Filter>Inc</Filter>
     </ClInclude>
   </ItemGroup>

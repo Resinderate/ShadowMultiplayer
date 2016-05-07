@@ -9,6 +9,8 @@ bool Server::StaticInit()
 {
 	sInstance.reset( new Server() );
 
+	ShadowFactory::StaticInit();
+
 	return true;
 }
 
@@ -116,7 +118,7 @@ void Server::SpawnCatForPlayer( int inPlayerId )
 	cat->SetColor( ScoreBoardManager::sInstance->GetEntry( inPlayerId )->GetColor() );
 	cat->SetPlayerId( inPlayerId );
 	//gotta pick a better spawn location than this...
-	cat->SetLocation( Vector3( 50.f, 50.f, 0.f ) );
+	cat->SetLocation( Vector3( 150.f, 100.f, 0.f ) );
 
 }
 
