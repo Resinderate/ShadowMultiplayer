@@ -23,5 +23,3 @@
 #include <ReplicationManagerClient.h>
 #include <NetworkManagerClient.h>
 #include <Client.h>
-
-#include <SFInputManager.h>

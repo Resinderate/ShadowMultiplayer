@@ -109,21 +109,6 @@
     <ClInclude Include="Inc\Yarn.h">
       <Filter>Inc</Filter>
     </ClInclude>
-    <ClInclude Include="Inc\SFMove.h">
-      <Filter>Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="Inc\SFInputState.h">
-      <Filter>Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="Inc\SFEInputAction.h">
-      <Filter>Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="Inc\SFMoveList.h">
-      <Filter>Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="Inc\SFTiming.h">
-      <Filter>Inc</Filter>
-    </ClInclude>
     <ClInclude Include="Inc\Line.hpp">
       <Filter>Inc</Filter>
     </ClInclude>
@@ -211,18 +196,6 @@
       <Filter>Src</Filter>
     </ClCompile>
     <ClCompile Include="Src\Yarn.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\SFInputState.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\SFMove.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\SFMoveList.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\SFTiming.cpp">
       <Filter>Src</Filter>
     </ClCompile>
     <ClCompile Include="Src\Line.cpp">
