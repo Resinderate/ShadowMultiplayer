@@ -14,7 +14,7 @@ public:
 	RoboCatPtr	GetCatForPlayer( int inPlayerId );
 	void	SpawnCatForPlayer( int inPlayerId );
 
-
+	//Changes by Kevin
 private:
 	Server();
 	float   TimeBetweenSpawns;

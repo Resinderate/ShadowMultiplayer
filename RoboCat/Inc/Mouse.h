@@ -22,5 +22,5 @@ public:
 
 protected:
 	Mouse();
-
+	bool picked;
 };

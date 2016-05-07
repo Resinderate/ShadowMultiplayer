@@ -16,7 +16,7 @@ RoboCat::RoboCat() :
 	mIsShooting( false ),
 	mHealth( 10 )
 {
-	SetCollisionRadius( 60.f );
+	SetCollisionRadius( 30.f );
 }
 
 void RoboCat::ProcessInput( float inDeltaTime, const InputState& inInputState )
@@ -115,6 +115,10 @@ void RoboCat::ProcessCollisions()
 	for( auto goIt = World::sInstance->GetGameObjects().begin(), end = World::sInstance->GetGameObjects().end(); goIt != end; ++goIt )
 	{
 		GameObject* target = goIt->get();
+		if (target->GetClassId() == 'MOUS')
+		{
+
+		}
 		if( target != this && !target->DoesWantToDie() )
 		{
 			//simple collision test for spheres- are the radii summed less than the distance?

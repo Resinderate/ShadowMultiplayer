@@ -1,4 +1,4 @@
-
+//Changes by Kevin
 #include <RoboCatServerPCH.h>
 
 
@@ -80,7 +80,7 @@ void Server::PickupUpdate()
 void Server::SetupWorld()
 {
 	//spawn some random mice
-	CreateRandomMice( 10 );
+	CreateRandomMice( 1 );
 	
 	//spawn more random mice!
 	//CreateRandomMice( 10 );

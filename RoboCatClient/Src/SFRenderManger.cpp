@@ -17,21 +17,22 @@ void SFRenderManager::RenderUI()
 
 	RTT.setPosition(20, 20);
 	InOut.setPosition(20, 50);
+	Health.setPosition(20, 100);
 
 	RTT.setFont(bebas);
 	InOut.setFont(bebas);
 	//Scoreboard.setFont(bebas);
-	//Health.setFont(bebas);
+	Health.setFont(bebas);
 
 	RTT.setCharacterSize(24);
 	InOut.setCharacterSize(24);
 	//Scoreboard.setCharacterSize(24);
-	//Health.setCharacterSize(24);
+	Health.setCharacterSize(24);
 	
 	RTT.setColor(sf::Color::Black);
 	InOut.setColor(sf::Color::Black);
 	//Scoreboard.setColor(sf::Color::White);
-	//Health.setColor(sf::Color::Black);
+	Health.setColor(sf::Color::Black);
 
 	// RTT
 	float rttMS = NetworkManagerClient::sInstance->GetAvgRoundTripTime().GetValue() * 1000.f;
@@ -42,18 +43,21 @@ void SFRenderManager::RenderUI()
 	string bandwidth = StringUtils::Sprintf("In %d  Bps, Out %d Bps",
 		static_cast< int >(NetworkManagerClient::sInstance->GetBytesReceivedPerSecond().GetValue()),
 		static_cast< int >(NetworkManagerClient::sInstance->GetBytesSentPerSecond().GetValue()));
+
 	InOut.setString(bandwidth);
 
 	// Scoreboard stuff
 	//const vector< ScoreBoardManager::Entry >& entries = ScoreBoardManager::sInstance->GetEntries();
 	//Scoreboard.setString("");
 
+	
+	string health = StringUtils::Sprintf("Health: %d" , FindCatHealth());
 	// HUD actually had some health in it. Not tracked really.
-	//Health.setString("");
-
+	Health.setString(health);
 	// Draw the text to screen.
 	SFWindowManager::sInstance->draw(RTT);
 	SFWindowManager::sInstance->draw(InOut);
+	SFWindowManager::sInstance->draw(Health);
 
 }
 
@@ -99,7 +103,26 @@ sf::Vector2f SFRenderManager::FindCatCentre()
 	}
 	return sf::Vector2f();
 }
-
+//using ronans code above to get the players details for the HUD
+uint8_t SFRenderManager::FindCatHealth()
+{
+	uint32_t catID = (uint32_t)'RCAT';
+	for (auto obj : World::sInstance->GetGameObjects())
+	{
+		// Find a cat.
+		if (obj->GetClassId() == catID)
+		{
+			RoboCat *cat = dynamic_cast<RoboCat*>(obj.get());
+			auto id = cat->GetPlayerId();
+			auto ourID = NetworkManagerClient::sInstance->GetPlayerId();
+			if (id == ourID)
+			{
+				return cat->GetHealth();
+			}
+		}
+	}
+	return 0;
+}
 
 void SFRenderManager::StaticInit()
 {

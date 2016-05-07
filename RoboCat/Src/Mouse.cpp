@@ -3,12 +3,18 @@
 Mouse::Mouse()
 {
 	SetScale( GetScale() * 0.5f );
-	SetCollisionRadius( 30.f );
+	SetCollisionRadius( 20.f );
+	picked = false;
 }
 
 
 bool Mouse::HandleCollisionWithCat( RoboCat* inCat )
 {
+	if (!picked)
+	{
+		inCat->GetHealth()++;
+		picked = true;
+	}
 	( void ) inCat;
 	return false;
 }
