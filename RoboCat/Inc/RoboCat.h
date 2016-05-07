@@ -63,7 +63,7 @@ protected:
 	
 	float				mLastMoveTimestamp;
 
-	float				mThrustDir;
+	sf::Vector2f		mThrustDir;
 	int					mHealth;
 
 	bool				mIsShooting;
