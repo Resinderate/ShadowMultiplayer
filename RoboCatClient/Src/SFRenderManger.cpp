@@ -28,8 +28,8 @@ void SFRenderManager::RenderUI()
 	//Scoreboard.setCharacterSize(24);
 	//Health.setCharacterSize(24);
 	
-	RTT.setColor(sf::Color::Black);
-	InOut.setColor(sf::Color::Black);
+	RTT.setColor(sf::Color::Red);
+	InOut.setColor(sf::Color::Red);
 	//Scoreboard.setColor(sf::Color::White);
 	//Health.setColor(sf::Color::Black);
 
@@ -164,12 +164,12 @@ void SFRenderManager::Render()
 
 	SFRenderManager::sInstance->RenderComponents();
 
+	// Draw shadows
+	RenderShadows();
+
 	//HUD::sInstance->Render();
 	// Might draw the UI elements in a different way. Could make a function in Render Manager to take care of it.
 	SFRenderManager::sInstance->RenderUI();
-
-	// Draw shadows
-	RenderShadows();
 
 	// Present our back buffer to our front buffer
 	SFWindowManager::sInstance->display();
