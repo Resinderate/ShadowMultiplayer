@@ -42,6 +42,7 @@ namespace
 
 void InputManager::HandleInput( EInputAction inInputAction, int inKeyCode )
 {
+	// Could just set the numbers here for input from controller.
 	switch( inKeyCode )
 	{
 	case sf::Keyboard::A:
@@ -61,6 +62,15 @@ void InputManager::HandleInput( EInputAction inInputAction, int inKeyCode )
 		break;
 	}
 
+}
+
+void InputManager::HandleControllerInput(sf::Vector2f p_axis)
+{
+	mCurrentState.mDesiredForwardAmount = std::max(p_axis.y, 0.f);
+	mCurrentState.mDesiredBackAmount = std::min(p_axis.y, 0.f);
+	
+	mCurrentState.mDesiredLeftAmount = std::min(p_axis.x, 0.f);
+	mCurrentState.mDesiredRightAmount = std::max(p_axis.x, 0.f);
 }
 
 

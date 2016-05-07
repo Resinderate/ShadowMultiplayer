@@ -5,6 +5,8 @@ std::unique_ptr< SFRenderManager >	SFRenderManager::sInstance;
 SFRenderManager::SFRenderManager()
 {
 	// Might need some view stuff in here or something.
+	view.reset(sf::FloatRect(0, 0, 1280, 720));
+	SFWindowManager::sInstance->setView(view);
 }
 
 void SFRenderManager::RenderUI()
@@ -63,6 +65,16 @@ void SFRenderManager::RenderShadows()
 	{
 		SFWindowManager::sInstance->draw(s);
 	}
+}
+
+void SFRenderManager::UpdateView()
+{
+	// Lower rate means more 'lag' on the camera following the player.
+	float rate = .01f;
+	sf::Vector2f player = FindCatCentre();
+	sf::Vector2f newCentre = view.getCenter() + ((player - view.getCenter()) * rate);
+	view.setCenter(newCentre);
+	SFWindowManager::sInstance->setView(view);
 }
 
 // Way of finding this clients cat, and then centre point. - Ronan
@@ -144,9 +156,10 @@ void SFRenderManager::RenderComponents()
 
 void SFRenderManager::Render()
 {
-	//
+	// Update the view position.
+	UpdateView();
+
 	// Clear the back buffer
-	//
 	SFWindowManager::sInstance->clear(sf::Color::White);
 
 	SFRenderManager::sInstance->RenderComponents();
@@ -158,8 +171,6 @@ void SFRenderManager::Render()
 	// Draw shadows
 	RenderShadows();
 
-	//
 	// Present our back buffer to our front buffer
-	//
 	SFWindowManager::sInstance->display();
 }

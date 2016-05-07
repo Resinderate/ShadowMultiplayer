@@ -9,6 +9,7 @@ bool Client::StaticInit( )
 	InputManager::StaticInit();
 
 	// New Versions.
+	// Window manager needs to be initialized before RenderManager.
 	SFWindowManager::StaticInit();
 	SFTextureManager::StaticInit();
 	SFRenderManager::StaticInit();
@@ -58,6 +59,7 @@ void Client::DoFrame()
 
 void Client::HandleEvent(sf::Event &p_event)
 {
+	sf::Vector2f in;
 	switch (p_event.type)
 	{
 	case sf::Event::KeyPressed:
@@ -66,6 +68,10 @@ void Client::HandleEvent(sf::Event &p_event)
 	case sf::Event::KeyReleased:
 		InputManager::sInstance->HandleInput(EIA_Released, p_event.key.code);
 		break;
+	case sf::Event::JoystickMoved:
+		in.x = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X) / 100.f;
+		in.y = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Y) / 100.f;
+		//InputManager::sInstance->HandleControllerInput(in);
 	default:
 		break;
 	}
