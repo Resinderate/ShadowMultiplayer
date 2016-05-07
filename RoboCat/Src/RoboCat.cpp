@@ -119,8 +119,24 @@ void RoboCat::TryMove(Vector3 p_move)
 	if (!ShadowFactory::sInstance->doesCollideWithWorld(player))
 	{
 		SetLocation(playerPosition + p_move);
+		return;
 	}
+
 	// Move checks for single dimension movement.
+	player.top -= move.y;
+	if (!ShadowFactory::sInstance->doesCollideWithWorld(player))
+	{
+		SetLocation(playerPosition + Vector3(p_move.mX, 0, 0));
+		return;
+	}
+
+	player.top += move.y;
+	player.left -= move.x;
+	if (!ShadowFactory::sInstance->doesCollideWithWorld(player))
+	{
+		SetLocation(playerPosition + Vector3(0, p_move.mY, 0));
+		return;
+	}
 }
 
 void RoboCat::ProcessCollisions()
