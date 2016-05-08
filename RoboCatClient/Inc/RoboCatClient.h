@@ -24,5 +24,8 @@ private:
 	float				mTimeLocationBecameOutOfSync;
 	float				mTimeVelocityBecameOutOfSync;
 	
+	// Either use a fake time that is based on ticks instead of time.
+	// or, do an internal timer contained within the class.
+	sf::Time m_gameTime;
 	SFSpriteComponentPtr m_sprite;
 };
