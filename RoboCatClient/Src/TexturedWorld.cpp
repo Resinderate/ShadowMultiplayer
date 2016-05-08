@@ -39,7 +39,25 @@ bool TexturedWorld::loadSprites()
 			// Check for the colors.
 			if (texWorld.getPixel(i, j) == sf::Color::White)
 			{
-				spr.setTexture(*SFTextureManager::sInstance->GetTexture("floor1"));
+				spr.setTexture(*SFTextureManager::sInstance->GetTexture("tile"));
+				spr.setPosition(i * tileSize, j * tileSize);
+				m_spriteTiles.push_back(spr);
+			}
+			else if (texWorld.getPixel(i, j) == sf::Color::Blue)
+			{
+				spr.setTexture(*SFTextureManager::sInstance->GetTexture("stone"));
+				spr.setPosition(i * tileSize, j * tileSize);
+				m_spriteTiles.push_back(spr);
+			}
+			else if (texWorld.getPixel(i, j) == sf::Color::Red)
+			{
+				spr.setTexture(*SFTextureManager::sInstance->GetTexture("wood"));
+				spr.setPosition(i * tileSize, j * tileSize);
+				m_spriteTiles.push_back(spr);
+			}
+			else if (texWorld.getPixel(i, j) == sf::Color::Green)
+			{
+				spr.setTexture(*SFTextureManager::sInstance->GetTexture("grass"));
 				spr.setPosition(i * tileSize, j * tileSize);
 				m_spriteTiles.push_back(spr);
 			}

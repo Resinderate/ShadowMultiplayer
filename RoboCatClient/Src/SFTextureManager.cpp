@@ -13,7 +13,11 @@ SFTextureManager::SFTextureManager()
 	CacheTexture("mouse", "../Assets/mouse.png");
 	CacheTexture("yarn", "../Assets/yarn.png");
 	CacheTexture("hitman", "../Assets/hitman.png");
-	CacheTexture("floor1", "../Assets/floor1.png");
+	CacheTexture("tile", "../Assets/tile.png");
+	CacheTexture("wood", "../Assets/wood.png");
+	CacheTexture("stone", "../Assets/stone.png");
+	CacheTexture("grass", "../Assets/grass.png");
+
 }
 
 SFTexturePtr SFTextureManager::GetTexture(const string & inTextureName)
