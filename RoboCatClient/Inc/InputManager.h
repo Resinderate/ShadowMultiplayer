@@ -8,7 +8,7 @@ public:
 	static unique_ptr< InputManager >	sInstance;
 
 	void HandleInput( EInputAction inInputAction, int inKeyCode );
-	void HandleControllerInput(sf::Vector2f p_axis);
+	void CheckControllerInput();
 
 	const InputState& GetState()	const	{ return mCurrentState; }
 

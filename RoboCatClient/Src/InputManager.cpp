@@ -42,7 +42,6 @@ namespace
 
 void InputManager::HandleInput( EInputAction inInputAction, int inKeyCode )
 {
-	// Could just set the numbers here for input from controller.
 	switch( inKeyCode )
 	{
 	case sf::Keyboard::A:
@@ -64,13 +63,38 @@ void InputManager::HandleInput( EInputAction inInputAction, int inKeyCode )
 
 }
 
-void InputManager::HandleControllerInput(sf::Vector2f p_axis)
+void InputManager::CheckControllerInput()
 {
-	mCurrentState.mDesiredForwardAmount = std::max(p_axis.y, 0.f);
-	mCurrentState.mDesiredBackAmount = std::min(p_axis.y, 0.f);
-	
-	mCurrentState.mDesiredLeftAmount = std::min(p_axis.x, 0.f);
-	mCurrentState.mDesiredRightAmount = std::max(p_axis.x, 0.f);
+	// Check if there is a controller in here. (Expensive?)
+	if (!sf::Joystick::isConnected(0))
+		return;
+
+	if (!sf::Joystick::hasAxis(0, sf::Joystick::X) ||
+		!sf::Joystick::hasAxis(0, sf::Joystick::X))
+		return;
+
+	// Take the controller input.
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::Y) >= 60)
+		mCurrentState.mDesiredBackAmount = 1.f;
+	else
+		mCurrentState.mDesiredBackAmount = 0.f;
+
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::Y) <= -60)
+		mCurrentState.mDesiredForwardAmount = 1.f;
+	else
+		mCurrentState.mDesiredForwardAmount = 0.f;
+
+
+	// Take the controller input.
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) <= -60)
+		mCurrentState.mDesiredLeftAmount = 1.f;
+	else
+		mCurrentState.mDesiredLeftAmount = 0.f;
+
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) >= 60)
+		mCurrentState.mDesiredRightAmount = 1.f;
+	else
+		mCurrentState.mDesiredRightAmount = 0.f;
 }
 
 
@@ -103,5 +127,6 @@ void InputManager::Update()
 	if( IsTimeToSampleInput() )
 	{
 		mPendingMove = &SampleInputAsMove();
+		CheckControllerInput();
 	}
 }

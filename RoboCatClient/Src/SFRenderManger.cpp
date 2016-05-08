@@ -54,11 +54,11 @@ void SFRenderManager::RenderUI()
 	string health = StringUtils::Sprintf("Health: %d" , FindCatHealth());
 	// HUD actually had some health in it. Not tracked really.
 	Health.setString(health);
+
 	// Draw the text to screen.
 	SFWindowManager::sInstance->draw(RTT);
 	SFWindowManager::sInstance->draw(InOut);
 	SFWindowManager::sInstance->draw(Health);
-
 }
 
 void SFRenderManager::RenderShadows()

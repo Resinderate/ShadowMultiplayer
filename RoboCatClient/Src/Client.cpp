@@ -70,10 +70,20 @@ void Client::HandleEvent(sf::Event &p_event)
 	case sf::Event::KeyReleased:
 		InputManager::sInstance->HandleInput(EIA_Released, p_event.key.code);
 		break;
-	case sf::Event::JoystickMoved:
-		in.x = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X) / 100.f;
-		in.y = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Y) / 100.f;
-		//InputManager::sInstance->HandleControllerInput(in);
+	case sf::Event::JoystickButtonPressed:
+		if (p_event.joystickButton.button == 0) // A on Joystick
+		{
+			auto shootingKey = sf::Keyboard::K;
+			InputManager::sInstance->HandleInput(EIA_Pressed, shootingKey);
+		}
+		break;
+	case sf::Event::JoystickButtonReleased:
+		if (p_event.joystickButton.button == 0) // A on Joystick
+		{
+			auto shootingKey = sf::Keyboard::K;
+			InputManager::sInstance->HandleInput(EIA_Released, shootingKey);
+		}
+		break;
 	default:
 		break;
 	}
