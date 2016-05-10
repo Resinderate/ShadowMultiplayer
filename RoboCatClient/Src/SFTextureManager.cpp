@@ -10,7 +10,7 @@ void SFTextureManager::StaticInit()
 SFTextureManager::SFTextureManager()
 {
 	CacheTexture("cat", "../Assets/cat.png");
-	CacheTexture("mouse", "../Assets/mouse.png");
+	CacheTexture("mouse", "../Assets/heart.png");
 	CacheTexture("yarn", "../Assets/yarn.png");
 	CacheTexture("hitman", "../Assets/hitman.png");
 	CacheTexture("tile", "../Assets/tile.png");

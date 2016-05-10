@@ -55,15 +55,18 @@ namespace
 	void CreateRandomMice( int inMouseCount )
 	{
 		Vector3 mouseMin( 0.f, 0.f, 0.f );
-		Vector3 mouseMax(1280.f, 720.f, 0.f );
+		Vector3 mouseMax(1920.f, 1280.f, 0.f );
 		GameObjectPtr go;
-
+		Vector3 mouseLocation;
+		float size = 32;
 		//make a mouse somewhere- where will these come from?
-		for( int i = 0; i < inMouseCount; ++i )
+		for (int i = 0; i < inMouseCount; ++i)
 		{
-			go = GameObjectRegistry::sInstance->CreateGameObject( 'MOUS' );
-			Vector3 mouseLocation = RoboMath::GetRandomVector( mouseMin, mouseMax );
-			go->SetLocation( mouseLocation );
+			go = GameObjectRegistry::sInstance->CreateGameObject('MOUS');
+			do {
+				mouseLocation = RoboMath::GetRandomVector(mouseMin, mouseMax);
+			} while (ShadowFactory::sInstance->doesCollideWithWorld(sf::FloatRect(mouseLocation.mX - (size / 2), mouseLocation.mY - (size / 2), size, size)));
+			go->SetLocation(mouseLocation);
 		}
 	}
 
