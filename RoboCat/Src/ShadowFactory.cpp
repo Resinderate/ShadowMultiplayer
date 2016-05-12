@@ -9,18 +9,25 @@ void ShadowFactory::StaticInit()
 	sInstance.reset(sf);
 }
 
-std::vector<sf::VertexArray> ShadowFactory::getShadows(sf::Vector2f playerPosition, sf::Color color)
+std::vector<sf::VertexArray> ShadowFactory::getShadows(sf::Vector2f playerPosition, sf::Color color, sf::FloatRect p_bounds)
 {
 	auto lines = getShadowLines();
 	std::vector<sf::VertexArray> shadows(lines.size());
+	float shadowLength = 30;
+	sf::VertexArray shadow(sf::TrianglesStrip, 4);
 
 	for (auto l : lines)
 	{
 		if (playerPosition == l.start || playerPosition == l.end)
 			continue;
 
-		sf::VertexArray shadow(sf::TrianglesStrip, 4);
-		float shadowLength = 30;
+		if (!l.InRect(p_bounds))
+			continue;
+
+		// If the 'wall' is facing away from us
+		sf::Vector2f toWall = l.start - playerPosition;
+		if (thor::dotProduct(toWall, l.normal) >= 0)
+			continue;
 
 		// Set the color
 		for (int i = 0; i < shadow.getVertexCount(); i++)
@@ -57,6 +64,7 @@ bool ShadowFactory::load()
 
 
 	auto size = map.getSize();
+	m_worldSize = sf::Vector2f(size.x * rectSize, size.y * rectSize);
 
 	for (int i = 0; i < size.x; i++)
 	{
@@ -76,6 +84,9 @@ bool ShadowFactory::load()
 
 bool ShadowFactory::doesCollideWithWorld(sf::FloatRect p_bounds)
 {
+	if (doesExitWithMapBounds(p_bounds))
+		return true;
+
 	for (auto s : shadowCasters)
 	{
 		if (s.intersects(p_bounds))
@@ -86,17 +97,47 @@ bool ShadowFactory::doesCollideWithWorld(sf::FloatRect p_bounds)
 	return false;
 }
 
+bool ShadowFactory::doesExitWithMapBounds(sf::FloatRect p_bounds)
+{
+	// Check all sides of the map.
+	if (p_bounds.top <= 0)
+		return true;
+	else if (p_bounds.left <= 0)
+		return true;
+	else if ((p_bounds.left + p_bounds.width) >= m_worldSize.x)
+		return true;
+	else if ((p_bounds.top + p_bounds.height) >= m_worldSize.y)
+		return true;
+
+	return false;
+}
+
 std::vector<Line> ShadowFactory::getShadowLines()
 {
+	// Predefine the normals.
+
+	// Up Normal
+	sf::Vector2f upN(0, -1);
+	// Right Normal
+	sf::Vector2f rightN(1, 0);
+	// Down Normal
+	sf::Vector2f downN(0, 1);
+	// Left Normal
+	sf::Vector2f leftN(-1, 0);
+
 	// 4 lines in each rect.
 	std::vector<Line> lines(shadowCasters.size() * 4);
 
 	for (auto r : shadowCasters)
 	{
-		lines.push_back(Line(sf::Vector2f(r.left, r.top), sf::Vector2f(r.left + r.width, r.top)));
-		lines.push_back(Line(sf::Vector2f(r.left + r.width, r.top), sf::Vector2f(r.left + r.width, r.top + r.height)));
-		lines.push_back(Line(sf::Vector2f(r.left + r.width, r.top + r.height), sf::Vector2f(r.left, r.top + r.height)));
-		lines.push_back(Line(sf::Vector2f(r.left, r.top + r.height), sf::Vector2f(r.left, r.top)));
+		// Top
+		lines.push_back(Line(sf::Vector2f(r.left, r.top), sf::Vector2f(r.left + r.width, r.top), upN));
+		// Right
+		lines.push_back(Line(sf::Vector2f(r.left + r.width, r.top), sf::Vector2f(r.left + r.width, r.top + r.height), rightN));
+		// Bot
+		lines.push_back(Line(sf::Vector2f(r.left + r.width, r.top + r.height), sf::Vector2f(r.left, r.top + r.height), downN));
+		// Left
+		lines.push_back(Line(sf::Vector2f(r.left, r.top + r.height), sf::Vector2f(r.left, r.top), leftN));
 	}
 
 	return lines;

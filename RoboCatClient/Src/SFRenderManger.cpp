@@ -6,6 +6,7 @@ SFRenderManager::SFRenderManager()
 {
 	// Might need some view stuff in here or something.
 	view.reset(sf::FloatRect(0, 0, 1280, 720));
+	//view.reset(sf::FloatRect(0, 0, 2560, 1440));
 	SFWindowManager::sInstance->setView(view);
 }
 
@@ -64,11 +65,28 @@ void SFRenderManager::RenderUI()
 void SFRenderManager::RenderShadows()
 {
 	sf::Vector2f player = FindCatCentre();
-	auto shadows = ShadowFactory::sInstance->getShadows(player, sf::Color::Black);
+	auto cen = view.getCenter();
+	auto size = view.getSize();
+
+	sf::FloatRect bounds(cen.x - (size.x / 2), cen.y - (size.y / 2), size.x, size.y);
+	
+	// Optimization debug stuff.
+	/*
+	sf::FloatRect bounds(view.getCenter().x - (size.x / 2 / 2), view.getCenter().y - (size.y / 2 / 2), size.x / 2, size.y / 2);
+	sf::RectangleShape r;
+	r.setPosition(bounds.left, bounds.top);
+	r.setSize(sf::Vector2f(bounds.width, bounds.height));
+	r.setOutlineThickness(5);
+	r.setFillColor(sf::Color::Transparent);
+	r.setOutlineColor(sf::Color::Red);
+	*/
+	
+	auto shadows = ShadowFactory::sInstance->getShadows(player, sf::Color::Black, bounds);
 	for (auto s : shadows)
 	{
 		SFWindowManager::sInstance->draw(s);
 	}
+	//SFWindowManager::sInstance->draw(r);
 }
 
 void SFRenderManager::UpdateView()
@@ -191,7 +209,7 @@ void SFRenderManager::Render()
 	UpdateView();
 
 	// Clear the back buffer
-	SFWindowManager::sInstance->clear(sf::Color::White);
+	SFWindowManager::sInstance->clear(sf::Color::Black);
 
 	SFRenderManager::sInstance->RenderTexturedWorld();
 
