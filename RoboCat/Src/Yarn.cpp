@@ -1,7 +1,7 @@
 #include <RoboCatPCH.h>
 
 Yarn::Yarn() :
-	mMuzzleSpeed( 60.f ),
+	mMuzzleSpeed( 120.f ),
 	mVelocity( Vector3::Zero ),
 	mPlayerId( 0 )
 {
@@ -81,18 +81,25 @@ bool Yarn::HandleCollisionWithCat( RoboCat* inCat )
 	return false;
 }
 
-
+//Kevin
+//Rather than using the normalised velocity of the player to get the direction the yarn now 
+//finds the direction the player is pointing by using the players rotation.
 void Yarn::InitFromShooter( RoboCat* inShooter )
 {
 	SetColor( inShooter->GetColor() );
 	SetPlayerId( inShooter->GetPlayerId() );
+	
 
 	Vector3 forward = inShooter->GetForwardVector();
 	Vector3 vel = inShooter->GetVelocity();
 	auto normVel = thor::unitVector(sf::Vector2f(vel.mX, vel.mY));
+	sf::Vector2f temp = sf::Vector2f(0, -1);
+	thor::rotate(temp, inShooter->GetRotation());
 
-	SetVelocity( Vector3(normVel.x, normVel.y, 0) * mMuzzleSpeed );
-	SetLocation( inShooter->GetLocation() /* + forward * 0.55f */ );
+	//SetVelocity(Vector3(normVel.x, normVel.y, 0) * mMuzzleSpeed);
+	
+	SetVelocity(Vector3(temp.x, temp.y, 0) * mMuzzleSpeed);
+	SetLocation( inShooter->GetLocation() /*+ Vector3(temp.x,temp.y,0) * 0.55f*/ );
 
 	SetRotation( inShooter->GetRotation() );
 }
