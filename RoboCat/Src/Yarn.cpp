@@ -1,7 +1,7 @@
 #include <RoboCatPCH.h>
 
 Yarn::Yarn() :
-	mMuzzleSpeed( 120.f ),
+	mMuzzleSpeed( 400.f ),
 	mVelocity( Vector3::Zero ),
 	mPlayerId( 0 )
 {
@@ -75,8 +75,6 @@ bool Yarn::HandleCollisionWithCat( RoboCat* inCat )
 	( void ) inCat;
 
 	//you hit a cat, so look like you hit a cat
-	
-
 
 	return false;
 }
