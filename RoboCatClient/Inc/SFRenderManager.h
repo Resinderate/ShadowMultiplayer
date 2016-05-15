@@ -32,4 +32,5 @@ private:
 	//this can't be only place that holds on to component- it has to live inside a GameObject in the world
 	vector< SFSpriteComponent* > mComponents;
 	sf::View view;
+	sf::Sprite m_startScreen;
 };

@@ -6,8 +6,8 @@ SFRenderManager::SFRenderManager()
 {
 	// Might need some view stuff in here or something.
 	view.reset(sf::FloatRect(0, 0, 1280, 720));
-	//view.reset(sf::FloatRect(0, 0, 2560, 1440));
 	SFWindowManager::sInstance->setView(view);
+	m_startScreen.setTexture(*SFTextureManager::sInstance->GetTexture("start_screen"));
 }
 
 void SFRenderManager::RenderUI()
@@ -205,22 +205,33 @@ void SFRenderManager::RenderComponents()
 
 void SFRenderManager::Render()
 {
-	// Update the view position.
-	UpdateView();
 
 	// Clear the back buffer
 	SFWindowManager::sInstance->clear(sf::Color::Black);
 
-	SFRenderManager::sInstance->RenderTexturedWorld();
+	// The game has started.
+	if (mComponents.size() > 0)
+	{
+		// Update the view position.
+		UpdateView();
 
-	SFRenderManager::sInstance->RenderComponents();
+		SFRenderManager::sInstance->RenderTexturedWorld();
 
-	// Draw shadows
-	RenderShadows();
+		SFRenderManager::sInstance->RenderComponents();
 
-	//HUD::sInstance->Render();
-	// Might draw the UI elements in a different way. Could make a function in Render Manager to take care of it.
-	SFRenderManager::sInstance->RenderUI();
+		// Draw shadows
+		RenderShadows();
+
+		// Draw UI elements.
+		SFRenderManager::sInstance->RenderUI();
+		
+	}
+	// The game has not started.
+	else
+	{
+		SFWindowManager::sInstance->draw(m_startScreen);
+	}
+	
 
 	// Present our back buffer to our front buffer
 	SFWindowManager::sInstance->display();
