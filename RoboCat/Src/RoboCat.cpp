@@ -71,8 +71,6 @@ void RoboCat::ProcessInput( float inDeltaTime, const InputState& inInputState )
 	mIsShooting = inInputState.IsShooting();
 
 
-
-
 }
 
 void RoboCat::AdjustVelocityByThrust( float inDeltaTime )
@@ -210,7 +208,6 @@ void RoboCat::ProcessCollisions()
 							mVelocity -= impulse * 2.f;
 							mVelocity *= mWallRestitution;
 						}
-
 					}
 				}
 			}

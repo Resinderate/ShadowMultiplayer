@@ -295,7 +295,7 @@ void NetworkManagerServer::RegisterGameObject( GameObjectPtr inGameObject )
 
 	//add mapping from network id to game object
 	mNetworkIdToGameObjectMap[ newNetworkId ] = inGameObject;
-
+	
 	//tell all client proxies this is new...
 	for( const auto& pair: mAddressToClientMap )
 	{
