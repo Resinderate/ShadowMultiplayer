@@ -3,7 +3,7 @@
 YarnClient::YarnClient()
 {
 	m_sprite.reset(new SFSpriteComponent(this));
-	m_sprite->SetTexture(SFTextureManager::sInstance->GetTexture("yarn"));
+	m_sprite->SetTexture(SFTextureManager::sInstance->GetTexture("bullet"));
 }
 
 

@@ -11,9 +11,9 @@ public:
 	~SFSpriteComponent();
 
 	void SetTexture(SFTexturePtr inTexture);
-	sf::Sprite& GetSprite();
+	virtual sf::Sprite& GetSprite();
 
-private:
+protected:
 
 	sf::Sprite m_sprite;
 
@@ -21,4 +21,15 @@ private:
 	GameObject* mGameObject;
 };
 
+class SFHealthSpriteComponent : public SFSpriteComponent
+{
+public:
+	SFHealthSpriteComponent(GameObject* inGameObject);
+	sf::Sprite& GetSprite();
+
+private:
+	std::string GetCorrectTexture(int health);
+};
+
 typedef shared_ptr< SFSpriteComponent >	SFSpriteComponentPtr;
+typedef shared_ptr< SFHealthSpriteComponent >	SFHealthSpriteComponentPtr;

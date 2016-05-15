@@ -10,7 +10,7 @@ void SoundManager::StaticInit()
 SoundManager::SoundManager()
 {
 	LoadSoundFromFile(pickup, pickupB, "../Assets/audio/Pickup.wav");
-	LoadSoundFromFile(pickup, pickupB, "../Assets/audio/hit.wav");
+	LoadSoundFromFile(shoot, shootB, "../Assets/audio/hit.wav");
 	LoadMusicFromFile(bgMusic, "../Assets/audio/background.wav");
 }
 
@@ -19,7 +19,7 @@ void SoundManager::LoadSoundFromFile(sf::Sound &p_sound, sf::SoundBuffer &p_buff
 	if (p_buffer.loadFromFile(p_file))
 	{
 		p_sound.setBuffer(p_buffer);
-		p_sound.setVolume(50);
+		p_sound.setVolume(35);
 	}
 }
 
@@ -27,7 +27,7 @@ void SoundManager::LoadMusicFromFile(sf::Music &p_music, string p_file)
 {
 	p_music.openFromFile(p_file);
 	p_music.setLoop(true);
-	p_music.setVolume(25);
+	p_music.setVolume(20);
 }
 
 void SoundManager::PlayMusic()

@@ -30,6 +30,20 @@ Server::Server()
 	//NetworkManagerServer::sInstance->SetSimulatedLatency( 0.5f );
 	//NetworkManagerServer::sInstance->SetSimulatedLatency( 0.1f );
 
+	m_spawnPoints = {
+		Vector3(128, 1088, 0),
+		Vector3(64, 448, 0),
+		Vector3(960, 1088, 0),
+		Vector3(1216, 1088, 0),
+		Vector3(768, 64, 0),
+		Vector3(1728, 64, 0),
+		Vector3(1728, 384, 0),
+		Vector3(1728, 640, 0),
+		Vector3(1728, 1088, 0),
+		Vector3(1152, 1088, 0),
+		Vector3(704, 832, 0)
+	};
+
 }
 
 
@@ -86,9 +100,6 @@ void Server::SetupWorld()
 {
 	//spawn some random mice
 	CreateRandomMice( 1 );
-	
-	//spawn more random mice!
-	//CreateRandomMice( 10 );
 }
 
 void Server::DoFrame()
@@ -120,8 +131,10 @@ void Server::SpawnCatForPlayer( int inPlayerId )
 	RoboCatPtr cat = std::static_pointer_cast< RoboCat >( GameObjectRegistry::sInstance->CreateGameObject( 'RCAT' ) );
 	cat->SetColor( ScoreBoardManager::sInstance->GetEntry( inPlayerId )->GetColor() );
 	cat->SetPlayerId( inPlayerId );
-	//gotta pick a better spawn location than this...
-	cat->SetLocation( Vector3( 150.f, 100.f, 0.f ) );
+	
+	// Pick one of a few random locations.
+	int randomIndex = rand() % m_spawnPoints.size();
+	cat->SetLocation( m_spawnPoints[randomIndex] );
 
 }
 

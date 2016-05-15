@@ -10,6 +10,7 @@ RoboCatClient::RoboCatClient() :
 	m_sprite.reset(new SFSpriteComponent(this));
 
 	SoundManager::sInstance->PlayMusic();
+	m_healthSprite.reset(new SFHealthSpriteComponent(this));
 }
 
 void RoboCatClient::HandleDying()

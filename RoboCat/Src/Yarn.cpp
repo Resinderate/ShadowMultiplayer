@@ -100,6 +100,7 @@ void Yarn::InitFromShooter( RoboCat* inShooter )
 	SetLocation( inShooter->GetLocation() /*+ Vector3(temp.x,temp.y,0) * 0.55f*/ );
 
 	SetRotation( inShooter->GetRotation() );
+
 }
 
 void Yarn::Update()

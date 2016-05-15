@@ -121,6 +121,9 @@
     <ClInclude Include="Inc\ShadowFactory.hpp">
       <Filter>Inc</Filter>
     </ClInclude>
+    <ClInclude Include="..\RoboCatClient\Inc\SoundManager.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\GameObject.cpp">
@@ -205,6 +208,9 @@
       <Filter>Src</Filter>
     </ClCompile>
     <ClCompile Include="Src\ShadowFactory.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\RoboCatClient\Src\SoundManager.cpp">
       <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>

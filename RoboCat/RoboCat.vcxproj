@@ -370,6 +370,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\RoboCatClient\Inc\SoundManager.h" />
     <ClInclude Include="Inc\AckRange.h" />
     <ClInclude Include="Inc\Line.hpp" />
     <ClInclude Include="Inc\ShadowFactory.hpp" />
@@ -406,6 +407,7 @@
     <ClInclude Include="Inc\UDPSocket.h" />
     <ClInclude Include="Inc\WeightedTimedMovingAverage.h" />
     <ClInclude Include="Inc\World.h" />
+    <ClCompile Include="..\RoboCatClient\Src\SoundManager.cpp" />
     <ClCompile Include="Src\AckRange.cpp" />
     <ClCompile Include="Src\Line.cpp" />
     <ClCompile Include="Src\ShadowFactory.cpp" />
