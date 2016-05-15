@@ -19,7 +19,7 @@ public:
 		{}
 
 		int							GetNetworkId()		const	{ return mNetworkId; }
-		ReplicationAction		GetAction()			const	{ return mAction; }
+		ReplicationAction			GetAction()			const	{ return mAction; }
 		uint32_t					GetState()			const	{ return mState; }
 
 	private:

@@ -9,7 +9,7 @@ RoboCatClient::RoboCatClient() :
 {
 	m_sprite.reset(new SFSpriteComponent(this));
 
-	SoundManager::sInstance->PlayMusic();
+	//SoundManager::sInstance->PlayMusic();
 	m_healthSprite.reset(new SFHealthSpriteComponent(this));
 }
 
@@ -65,6 +65,8 @@ void RoboCatClient::Update()
 			mTimeLocationBecameOutOfSync = 0.f;
 		}
 	}
+
+	
 }
 
 void RoboCatClient::Read( InputMemoryBitStream& inInputStream )

@@ -22,6 +22,9 @@ void ReplicationManagerClient::Read( InputMemoryBitStream& inInputStream )
 		case RA_Destroy:
 			ReadAndDoDestroyAction( inInputStream, networkId );
 			break;
+	/*	case RA_RPC:
+			ReadAndDoRPCAction(inInputStream, networkId);
+			break;*/
 		}
 
 	}
@@ -72,4 +75,12 @@ void ReplicationManagerClient::ReadAndDoDestroyAction( InputMemoryBitStream& inI
 		gameObject->SetDoesWantToDie( true );
 		NetworkManagerClient::sInstance->RemoveFromNetworkIdToGameObjectMap( gameObject );
 	}
+}
+
+void ReplicationManagerClient::ReadAndDoRPCAction(InputMemoryBitStream& inInputStream, int inNetworkId)
+{
+	SoundManager::SoundToPlay sound;
+	inInputStream.Read(sound);
+	SoundManager::sInstance->PlaySound(sound);
+	Log("Sound Played");
 }

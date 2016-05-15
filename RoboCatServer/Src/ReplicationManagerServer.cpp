@@ -59,6 +59,9 @@ void ReplicationManagerServer::Write( OutputMemoryBitStream& inOutputStream, Rep
 				//don't need anything other than state!
 				writtenState = WriteDestroyAction( inOutputStream, networkId, dirtyState );
 				break;
+			/*case RA_RPC:
+				writtenState = WriteRPCAction(inOutputStream, dirtyState);
+				break;*/
 			}
 		
 			ioTransmissinData->AddTransmission( networkId, action, writtenState );
@@ -103,5 +106,11 @@ uint32_t ReplicationManagerServer::WriteDestroyAction( OutputMemoryBitStream& in
 	( void ) inDirtyState;
 	//don't have to do anything- action already written
 
+	return inDirtyState;
+}
+
+uint32_t ReplicationManagerServer::WriteRPCAction(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState)
+{
+	inOutputStream.Write(SoundManager::SoundToPlay::STP_Join);
 	return inDirtyState;
 }
