@@ -8,7 +8,8 @@ RoboCatClient::RoboCatClient() :
 	m_textureIsDirty(true)
 {
 	m_sprite.reset(new SFSpriteComponent(this));
-	
+
+	SoundManager::sInstance->PlayMusic();
 }
 
 void RoboCatClient::HandleDying()

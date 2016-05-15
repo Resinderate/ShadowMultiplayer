@@ -66,6 +66,9 @@
     <ClCompile Include="Src\PlayerTextureGenerator.cpp">
       <Filter>Src</Filter>
     </ClCompile>
+    <ClCompile Include="Src\SoundManager.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\RoboCatClientPCH.h">
@@ -117,6 +120,9 @@
       <Filter>Inc</Filter>
     </ClInclude>
     <ClInclude Include="Inc\PlayerTextureGenerator.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\SoundManager.h">
       <Filter>Inc</Filter>
     </ClInclude>
   </ItemGroup>

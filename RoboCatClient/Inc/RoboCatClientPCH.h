@@ -19,6 +19,7 @@
 #include <RoboCatClient.h>
 #include <MouseClient.h>
 #include <YarnClient.h>
+#include <SoundManager.h>
 
 #include <HUD.h>
 

@@ -1,4 +1,4 @@
-#include "RoboCatPCH.h"
+#include "RoboCatClientPCH.h"
 
 std::unique_ptr< SoundManager >	SoundManager::sInstance;
 
@@ -9,9 +9,8 @@ void SoundManager::StaticInit()
 
 SoundManager::SoundManager()
 {
-	LoadSoundFromFile(sound1, sound1B, "..\..\Assets\audio\Pickup.wav");
-	LoadMusicFromFile(bgMusic, "..\..\Assets\audio\background.wav");
-
+	LoadSoundFromFile(pickup, pickupB, "../Assets/audio/Pickup.wav");
+	LoadMusicFromFile(bgMusic, "../Assets/audio/background.wav");
 }
 
 void SoundManager::LoadSoundFromFile(sf::Sound &p_sound, sf::SoundBuffer &p_buffer, string p_file)
@@ -27,6 +26,10 @@ void SoundManager::LoadMusicFromFile(sf::Music &p_music, string p_file)
 {
 	p_music.openFromFile(p_file);
 	p_music.setLoop(true);
-	p_music.setVolume(50);
-		
+	p_music.setVolume(25);
+}
+
+void SoundManager::PlayMusic()
+{
+	bgMusic.play();
 }

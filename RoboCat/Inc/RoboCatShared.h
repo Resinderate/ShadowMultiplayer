@@ -85,7 +85,6 @@ class GameObject;
 #include "Yarn.h"
 #include "StringUtils.h"
 #include "ScoreBoardManager.h"
-#include "SoundManager.h"
 
 #include "WeightedTimedMovingAverage.h"
 #include "ReplicationCommand.h"

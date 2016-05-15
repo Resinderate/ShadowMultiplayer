@@ -18,9 +18,8 @@ bool Client::StaticInit( )
 	ShadowFactory::StaticInit();
 	TexturedWorld::StaticInit();
 	PlayerTextureGenerator::StaticInit();
-
 	HUD::StaticInit();
-
+	SoundManager::StaticInit();
 	sInstance.reset( client );
 
 	return true;
