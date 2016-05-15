@@ -197,9 +197,13 @@ void SFRenderManager::RenderComponents()
 {
 	//Get the logical viewport so we can pass this to the SpriteComponents when it's draw time
 
-	for (auto c : mComponents)
+	for (SFSpriteComponent* c : mComponents)
 	{
-		SFWindowManager::sInstance->draw(c->GetSprite());
+		SFHealthSpriteComponent* ptr = dynamic_cast<SFHealthSpriteComponent*>(c);
+		if (ptr)
+			SFWindowManager::sInstance->draw(ptr->GetSprite());
+		else
+			SFWindowManager::sInstance->draw(c->GetSprite());
 	}
 }
 

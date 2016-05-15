@@ -66,6 +66,9 @@
     <ClCompile Include="Src\PlayerTextureGenerator.cpp">
       <Filter>Src</Filter>
     </ClCompile>
+    <ClCompile Include="Src\SFHealthSpriteComponent.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\RoboCatClientPCH.h">

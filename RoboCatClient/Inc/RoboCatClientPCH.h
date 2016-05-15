@@ -8,7 +8,6 @@
 
 #include <InputManager.h>
 
-
 #include <SFSpriteComponent.h>
 #include <SFRenderManager.h>
 #include <SFTextureManager.h>

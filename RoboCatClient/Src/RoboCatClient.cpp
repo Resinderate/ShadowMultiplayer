@@ -8,7 +8,7 @@ RoboCatClient::RoboCatClient() :
 	m_textureIsDirty(true)
 {
 	m_sprite.reset(new SFSpriteComponent(this));
-	
+	m_healthSprite.reset(new SFHealthSpriteComponent(this));
 }
 
 void RoboCatClient::HandleDying()

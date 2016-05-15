@@ -10,11 +10,6 @@ Mouse::Mouse()
 
 bool Mouse::HandleCollisionWithCat( RoboCat* inCat )
 {
-	if (!picked)
-	{
-		inCat->GetHealth()++;
-		picked = true;
-	}
 	( void ) inCat;
 	return false;
 }
