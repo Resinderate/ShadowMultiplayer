@@ -7,10 +7,10 @@
 
 bool Server::StaticInit()
 {
-	sInstance.reset( new Server() );
-
 	ShadowFactory::StaticInit();
+	ConnectionDetails::StaticInit();
 
+	sInstance.reset( new Server() );
 	return true;
 }
 
@@ -56,9 +56,7 @@ int Server::Run()
 
 bool Server::InitNetworkManager()
 {
-	string portString = StringUtils::GetCommandLineArg( 1 );
-	uint16_t port = stoi( portString );
-
+	uint16_t port = ConnectionDetails::sInstance->GetServerPort();
 	return NetworkManagerServer::StaticInit( port );
 }
 

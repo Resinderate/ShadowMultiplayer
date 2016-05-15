@@ -83,7 +83,7 @@ void SFRenderManager::RenderShadows()
 void SFRenderManager::UpdateView()
 {
 	// Lower rate means more 'lag' on the camera following the player.
-	float rate = .01f;
+	float rate = .02f;
 	if (FindCatCentre() != sf::Vector2f(-1, -1))
 	{
 		sf::Vector2f player = FindCatCentre();

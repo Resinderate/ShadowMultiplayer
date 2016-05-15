@@ -3,6 +3,8 @@
 
 bool Client::StaticInit( )
 {
+	ConnectionDetails::StaticInit();
+
 	// Create the Client pointer first because it initializes SDL
 	Client* client = new Client();
 
@@ -20,6 +22,7 @@ bool Client::StaticInit( )
 	PlayerTextureGenerator::StaticInit();
 	HUD::StaticInit();
 	SoundManager::StaticInit();
+
 	sInstance.reset( client );
 
 	return true;
@@ -31,8 +34,10 @@ Client::Client()
 	GameObjectRegistry::sInstance->RegisterCreationFunction( 'MOUS', MouseClient::StaticCreate );
 	GameObjectRegistry::sInstance->RegisterCreationFunction( 'YARN', YarnClient::StaticCreate );
 
-	string destination = StringUtils::GetCommandLineArg( 1 );
-	string name = StringUtils::GetCommandLineArg( 2 );
+	//string destination = StringUtils::GetCommandLineArg( 1 );
+	string destination = ConnectionDetails::sInstance->GetClientDestination();
+	//string name = StringUtils::GetCommandLineArg( 2 );
+	string name = ConnectionDetails::sInstance->GetClientName();
 
 	SocketAddressPtr serverAddress = SocketAddressFactory::CreateIPv4FromString( destination );
 

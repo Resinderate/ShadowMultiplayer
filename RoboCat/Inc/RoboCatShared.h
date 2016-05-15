@@ -34,6 +34,7 @@
 #include "unordered_set"
 #include <cmath>
 #include "cassert"
+#include <fstream>
 
 using std::shared_ptr;
 using std::unique_ptr;
@@ -95,3 +96,4 @@ class GameObject;
 #include "VectorAlgebra2D.hpp"
 #include "Line.hpp"
 #include "ShadowFactory.hpp"
+#include "ConnectionDetails.h"

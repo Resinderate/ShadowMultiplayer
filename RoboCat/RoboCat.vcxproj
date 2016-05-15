@@ -371,6 +371,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Inc\AckRange.h" />
+    <ClInclude Include="Inc\ConnectionDetails.h" />
     <ClInclude Include="Inc\Line.hpp" />
     <ClInclude Include="Inc\ShadowFactory.hpp" />
     <ClInclude Include="Inc\Trigonometry.hpp" />
@@ -407,6 +408,7 @@
     <ClInclude Include="Inc\WeightedTimedMovingAverage.h" />
     <ClInclude Include="Inc\World.h" />
     <ClCompile Include="Src\AckRange.cpp" />
+    <ClCompile Include="Src\ConnectionDetails.cpp" />
     <ClCompile Include="Src\Line.cpp" />
     <ClCompile Include="Src\ShadowFactory.cpp" />
     <ClCompile Include="Src\Trigonometry.cpp" />
