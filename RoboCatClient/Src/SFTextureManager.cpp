@@ -10,13 +10,23 @@ void SFTextureManager::StaticInit()
 SFTextureManager::SFTextureManager()
 {
 	CacheTexture("cat", "../Assets/cat.png");
-	CacheTexture("mouse", "../Assets/heart.png");
+	CacheTexture("heart", "../Assets/heart.png");
 	CacheTexture("yarn", "../Assets/yarn.png");
-	CacheTexture("hitman", "../Assets/hitman.png");
 	CacheTexture("tile", "../Assets/tile.png");
 	CacheTexture("wood", "../Assets/wood.png");
 	CacheTexture("stone", "../Assets/stone.png");
 	CacheTexture("grass", "../Assets/grass.png");
+
+	// Player textures.
+	CacheTexture("hitman", "../Assets/hitman.png");
+	CacheTexture("hatman", "../Assets/hatman.png");
+	CacheTexture("man_blue", "../Assets/man_blue.png");
+	CacheTexture("man_brown", "../Assets/man_brown.png");
+	CacheTexture("man_old", "../Assets/man_old.png");
+	CacheTexture("robot", "../Assets/robot.png");
+	CacheTexture("soldier", "../Assets/soldier.png");
+	CacheTexture("woman", "../Assets/woman.png");
+	CacheTexture("zombie", "../Assets/zombie.png");
 
 }
 

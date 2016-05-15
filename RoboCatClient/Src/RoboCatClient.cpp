@@ -4,10 +4,11 @@
 
 RoboCatClient::RoboCatClient() :
 	mTimeLocationBecameOutOfSync( 0.f ),
-	mTimeVelocityBecameOutOfSync( 0.f )
+	mTimeVelocityBecameOutOfSync( 0.f ),
+	m_textureIsDirty(true)
 {
 	m_sprite.reset(new SFSpriteComponent(this));
-	m_sprite->SetTexture(SFTextureManager::sInstance->GetTexture("hitman"));
+	
 }
 
 void RoboCatClient::HandleDying()
@@ -24,6 +25,14 @@ void RoboCatClient::HandleDying()
 
 void RoboCatClient::Update()
 {
+	// Check if we need to set the texture.
+	if (m_textureIsDirty)
+	{
+		Log(std::to_string(GetPlayerId()));
+		m_sprite->SetTexture(PlayerTextureGenerator::sInstance->GetPlayerTexure(GetPlayerId()));
+		m_textureIsDirty = false;
+	}
+
 	//is this the cat owned by us?
 	if( GetPlayerId() == NetworkManagerClient::sInstance->GetPlayerId() )
 	{

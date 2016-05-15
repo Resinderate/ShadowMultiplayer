@@ -17,6 +17,7 @@ bool Client::StaticInit( )
 	FontManager::StaticInit();
 	ShadowFactory::StaticInit();
 	TexturedWorld::StaticInit();
+	PlayerTextureGenerator::StaticInit();
 
 	HUD::StaticInit();
 

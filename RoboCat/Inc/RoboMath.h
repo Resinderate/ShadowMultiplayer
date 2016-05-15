@@ -73,6 +73,11 @@ public:
 		mZ -= inRight.mZ;
 		return *this;
 	}
+
+	bool operator==(const Vector3& right)
+	{
+		return (mX == right.mX && mY == right.mY && mZ == right.mZ);
+	}
 	
 	float Length()
 	{

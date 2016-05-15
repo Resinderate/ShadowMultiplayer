@@ -8,11 +8,13 @@
 
 #include <InputManager.h>
 
+
 #include <SFSpriteComponent.h>
 #include <SFRenderManager.h>
 #include <SFTextureManager.h>
 #include <SFWindowManager.h>
 #include "FontManager.h"
+#include "PlayerTextureGenerator.h"
 
 #include <RoboCatClient.h>
 #include <MouseClient.h>

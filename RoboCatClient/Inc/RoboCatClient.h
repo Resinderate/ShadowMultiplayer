@@ -28,4 +28,6 @@ private:
 	// or, do an internal timer contained within the class.
 	sf::Time m_gameTime;
 	SFSpriteComponentPtr m_sprite;
+
+	bool m_textureIsDirty;
 };
