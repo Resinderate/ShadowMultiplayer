@@ -23,4 +23,6 @@ private:
 	void	PickupUpdate();
 	void	SetupWorld();
 
+	std::vector<Vector3> m_spawnPoints;
+
 };

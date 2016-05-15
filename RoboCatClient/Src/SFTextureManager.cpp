@@ -11,7 +11,7 @@ SFTextureManager::SFTextureManager()
 {
 	CacheTexture("cat", "../Assets/cat.png");
 	CacheTexture("heart", "../Assets/heart.png");
-	CacheTexture("yarn", "../Assets/yarn.png");
+	CacheTexture("bullet", "../Assets/bullet.png");
 	CacheTexture("tile", "../Assets/tile.png");
 	CacheTexture("wood", "../Assets/wood.png");
 	CacheTexture("stone", "../Assets/stone.png");
