@@ -264,7 +264,7 @@ void SFRenderManager::Render()
 		if (FindCatCentre() == sf::Vector2f(-1, -1))
 		{
 			// Print some you are dead screen
-			sf::Vector2f died(m_lastCatPos.x - view.getSize().x / 2, m_lastCatPos.y - view.getSize().y / 2);
+			sf::Vector2f died(view.getCenter().x - view.getSize().x / 2, view.getCenter().y - view.getSize().y / 2);
 			m_diedScreen.setPosition(died);
 			SFWindowManager::sInstance->draw(m_diedScreen);
 		}
@@ -273,16 +273,13 @@ void SFRenderManager::Render()
 			// We are the last man standing.
 			sf::Vector2f cats = NumberofAliveCats();
 
-			Log("Cats Alive:" + std::to_string(cats.x));
-			Log("Total Cats:" + std::to_string(cats.y));
-
-			if (cats.x == 1.f && FindCatHealth() > 0)
+			
+			if (cats.x == 1.f && FindCatHealth() > 0 && 
+				ScoreBoardManager::sInstance->GetEntry(NetworkManagerClient::sInstance->GetPlayerId())->GetScore() > 0)
 			{
 				// Draw some you are the winner screen.
-				auto pos = FindCatCentre();
-				//sf::Vector2f offsetPos(pos.x - view.getSize().x / 2, pos.y - view.getSize().y / 2);
-				sf::Vector2f offsetPos(pos.x, pos.y);
-				m_diedScreen.setPosition(offsetPos);
+				sf::Vector2f winner(view.getCenter().x - view.getSize().x / 2, view.getCenter().y - view.getSize().y / 2);
+				m_winnerScreen.setPosition(winner);
 				SFWindowManager::sInstance->draw(m_winnerScreen);
 			}
 		}
