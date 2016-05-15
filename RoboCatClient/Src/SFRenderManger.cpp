@@ -21,7 +21,7 @@ void SFRenderManager::RenderUI()
 	sf::Vector2f basePos(view.getCenter().x - view.getSize().x / 2, view.getCenter().y - view.getSize().y / 2);
 
 	RTT.setPosition(basePos.x + 20, basePos.y + 20);
-	InOut.setPosition(basePos.x + 20, basePos.y + 50);
+	InOut.setPosition(basePos.x + 120, basePos.y + 20);
 
 	RTT.setFont(bebas);
 	InOut.setFont(bebas);
