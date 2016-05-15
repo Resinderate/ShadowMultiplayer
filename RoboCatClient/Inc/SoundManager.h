@@ -15,8 +15,8 @@ public:
 	void PlayMusic();
 protected:
 	SoundManager();
-	sf::Sound pickup;
-	sf::SoundBuffer pickupB;
+	sf::Sound pickup, shoot, death, join;
+	sf::SoundBuffer pickupB, shootB, deathB, joinB;
 	sf::Music bgMusic;
 	void LoadSoundFromFile(sf::Sound &p_sound, sf::SoundBuffer &p_buffer, string p_file);
 	void LoadMusicFromFile(sf::Music &p_music, string p_file);

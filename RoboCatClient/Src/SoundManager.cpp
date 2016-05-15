@@ -10,6 +10,7 @@ void SoundManager::StaticInit()
 SoundManager::SoundManager()
 {
 	LoadSoundFromFile(pickup, pickupB, "../Assets/audio/Pickup.wav");
+	LoadSoundFromFile(pickup, pickupB, "../Assets/audio/hit.wav");
 	LoadMusicFromFile(bgMusic, "../Assets/audio/background.wav");
 }
 
