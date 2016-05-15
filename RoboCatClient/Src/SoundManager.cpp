@@ -1,4 +1,4 @@
-#include "RoboCatClientPCH.h"
+#include "RoboCatPCH.h"
 
 std::unique_ptr< SoundManager >	SoundManager::sInstance;
 
@@ -32,4 +32,20 @@ void SoundManager::LoadMusicFromFile(sf::Music &p_music, string p_file)
 void SoundManager::PlayMusic()
 {
 	bgMusic.play();
+}
+
+void SoundManager::PlaySound(SoundToPlay p_sound)
+{
+	switch (p_sound)
+	{
+	case SoundManager::STP_Pickup:
+		pickup.play();
+		break;
+	case SoundManager::STP_Shoot:
+		break;
+	case SoundManager::STP_Death:
+		break;
+	case SoundManager::STP_Join:
+		break;
+	}
 }

@@ -14,6 +14,8 @@ bool Mouse::HandleCollisionWithCat( RoboCat* inCat )
 	{
 		inCat->GetHealth()++;
 		picked = true;
+
+		SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Pickup);
 	}
 	( void ) inCat;
 	return false;

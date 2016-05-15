@@ -4,8 +4,14 @@ public:
 
 	static void StaticInit();
 	static std::unique_ptr< SoundManager >	sInstance;
-
-	void PlaySound();
+	enum SoundToPlay
+	{
+		STP_Pickup  = 1 << 0,
+		STP_Shoot   = 1 << 1,
+		STP_Death	= 1 << 2,
+		STP_Join	= 1 << 3
+	};
+	void PlaySound(SoundToPlay p_sound);
 	void PlayMusic();
 protected:
 	SoundManager();
