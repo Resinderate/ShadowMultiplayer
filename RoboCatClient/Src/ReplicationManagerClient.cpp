@@ -51,6 +51,15 @@ void ReplicationManagerClient::ReadAndDoCreateAction( InputMemoryBitStream& inIn
 		assert( gameObject->GetClassId() == fourCCName );
 	}
 
+	if (gameObject->GetClassId() == 'RCAT')
+	{
+		SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Join);
+	}
+	if (gameObject->GetClassId() == 'YARN')
+	{
+		SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Join);
+		gameObject->GetLocation();
+	}
 	//and read state
 	gameObject->Read( inInputStream );
 }
@@ -74,6 +83,11 @@ void ReplicationManagerClient::ReadAndDoDestroyAction( InputMemoryBitStream& inI
 	{
 		gameObject->SetDoesWantToDie( true );
 		NetworkManagerClient::sInstance->RemoveFromNetworkIdToGameObjectMap( gameObject );
+	}
+
+	if (gameObject->GetClassId() == 'RCAT')
+	{
+		SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Death);
 	}
 }
 

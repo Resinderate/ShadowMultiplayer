@@ -55,3 +55,13 @@ void SoundManager::PlaySound(SoundToPlay p_sound)
 		break;
 	}
 }
+
+void SoundManager::PlaySoundAtLocation(SoundToPlay p_sound, sf::Vector2f p_location)
+{
+	switch (p_sound)
+	{
+	case SoundManager::STP_Shoot:
+		shoot.play();
+		break;
+	}
+}
