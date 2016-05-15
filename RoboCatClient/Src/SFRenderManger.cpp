@@ -16,27 +16,22 @@ void SFRenderManager::RenderUI()
 {
 	sf::Font bebas = *FontManager::sInstance->GetFont("bebas");
 
-	sf::Text RTT, InOut, Scoreboard, Health;
+	sf::Text RTT, InOut;
 
-	RTT.setPosition(20, 20);
-	InOut.setPosition(20, 50);
-	Health.setPosition(20, 100);
+	sf::Vector2f basePos(view.getCenter().x - view.getSize().x / 2, view.getCenter().y - view.getSize().y / 2);
+
+	RTT.setPosition(basePos.x + 20, basePos.y + 20);
+	InOut.setPosition(basePos.x + 20, basePos.y + 50);
 
 	RTT.setFont(bebas);
 	InOut.setFont(bebas);
-	//Scoreboard.setFont(bebas);
-	Health.setFont(bebas);
 
 	RTT.setCharacterSize(24);
 	InOut.setCharacterSize(24);
-	//Scoreboard.setCharacterSize(24);
-	Health.setCharacterSize(24);
 	
 	RTT.setColor(sf::Color::Red);
 	InOut.setColor(sf::Color::Red);
-	//Scoreboard.setColor(sf::Color::White);
-	Health.setColor(sf::Color::Red);
-
+	
 	// RTT
 	float rttMS = NetworkManagerClient::sInstance->GetAvgRoundTripTime().GetValue() * 1000.f;
 	string roundTripTime = StringUtils::Sprintf("RTT %d ms", (int)rttMS);
@@ -49,19 +44,9 @@ void SFRenderManager::RenderUI()
 
 	InOut.setString(bandwidth);
 
-	// Scoreboard stuff
-	//const vector< ScoreBoardManager::Entry >& entries = ScoreBoardManager::sInstance->GetEntries();
-	//Scoreboard.setString("");
-
-	
-	string health = StringUtils::Sprintf("Health: %d" , FindCatHealth());
-	// HUD actually had some health in it. Not tracked really.
-	Health.setString(health);
-
 	// Draw the text to screen.
 	SFWindowManager::sInstance->draw(RTT);
 	SFWindowManager::sInstance->draw(InOut);
-	SFWindowManager::sInstance->draw(Health);
 }
 
 void SFRenderManager::RenderShadows()
