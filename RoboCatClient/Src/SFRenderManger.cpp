@@ -16,27 +16,22 @@ void SFRenderManager::RenderUI()
 {
 	sf::Font bebas = *FontManager::sInstance->GetFont("bebas");
 
-	sf::Text RTT, InOut, Scoreboard, Health;
+	sf::Text RTT, InOut;
 
-	RTT.setPosition(20, 20);
-	InOut.setPosition(20, 50);
-	Health.setPosition(20, 100);
+	sf::Vector2f basePos(view.getCenter().x - view.getSize().x / 2, view.getCenter().y - view.getSize().y / 2);
+
+	RTT.setPosition(basePos.x + 20, basePos.y + 20);
+	InOut.setPosition(basePos.x + 120, basePos.y + 20);
 
 	RTT.setFont(bebas);
 	InOut.setFont(bebas);
-	//Scoreboard.setFont(bebas);
-	Health.setFont(bebas);
 
 	RTT.setCharacterSize(24);
 	InOut.setCharacterSize(24);
-	//Scoreboard.setCharacterSize(24);
-	Health.setCharacterSize(24);
 	
 	RTT.setColor(sf::Color::Red);
 	InOut.setColor(sf::Color::Red);
-	//Scoreboard.setColor(sf::Color::White);
-	Health.setColor(sf::Color::Red);
-
+	
 	// RTT
 	float rttMS = NetworkManagerClient::sInstance->GetAvgRoundTripTime().GetValue() * 1000.f;
 	string roundTripTime = StringUtils::Sprintf("RTT %d ms", (int)rttMS);
@@ -49,19 +44,9 @@ void SFRenderManager::RenderUI()
 
 	InOut.setString(bandwidth);
 
-	// Scoreboard stuff
-	//const vector< ScoreBoardManager::Entry >& entries = ScoreBoardManager::sInstance->GetEntries();
-	//Scoreboard.setString("");
-
-	
-	string health = StringUtils::Sprintf("Health: %d" , FindCatHealth());
-	// HUD actually had some health in it. Not tracked really.
-	Health.setString(health);
-
 	// Draw the text to screen.
 	SFWindowManager::sInstance->draw(RTT);
 	SFWindowManager::sInstance->draw(InOut);
-	SFWindowManager::sInstance->draw(Health);
 }
 
 void SFRenderManager::RenderShadows()
@@ -98,7 +83,7 @@ void SFRenderManager::RenderShadows()
 void SFRenderManager::UpdateView()
 {
 	// Lower rate means more 'lag' on the camera following the player.
-	float rate = .01f;
+	float rate = .02f;
 	if (FindCatCentre() != sf::Vector2f(-1, -1))
 	{
 		sf::Vector2f player = FindCatCentre();
@@ -264,7 +249,7 @@ void SFRenderManager::Render()
 		if (FindCatCentre() == sf::Vector2f(-1, -1))
 		{
 			// Print some you are dead screen
-			sf::Vector2f died(m_lastCatPos.x - view.getSize().x / 2, m_lastCatPos.y - view.getSize().y / 2);
+			sf::Vector2f died(view.getCenter().x - view.getSize().x / 2, view.getCenter().y - view.getSize().y / 2);
 			m_diedScreen.setPosition(died);
 			SFWindowManager::sInstance->draw(m_diedScreen);
 		}
@@ -273,16 +258,13 @@ void SFRenderManager::Render()
 			// We are the last man standing.
 			sf::Vector2f cats = NumberofAliveCats();
 
-			Log("Cats Alive:" + std::to_string(cats.x));
-			Log("Total Cats:" + std::to_string(cats.y));
-
-			if (cats.x == 1.f && FindCatHealth() > 0)
+			
+			if (cats.x == 1.f && FindCatHealth() > 0 && 
+				ScoreBoardManager::sInstance->GetEntry(NetworkManagerClient::sInstance->GetPlayerId())->GetScore() > 0)
 			{
 				// Draw some you are the winner screen.
-				auto pos = FindCatCentre();
-				//sf::Vector2f offsetPos(pos.x - view.getSize().x / 2, pos.y - view.getSize().y / 2);
-				sf::Vector2f offsetPos(pos.x, pos.y);
-				m_diedScreen.setPosition(offsetPos);
+				sf::Vector2f winner(view.getCenter().x - view.getSize().x / 2, view.getCenter().y - view.getSize().y / 2);
+				m_winnerScreen.setPosition(winner);
 				SFWindowManager::sInstance->draw(m_winnerScreen);
 			}
 		}

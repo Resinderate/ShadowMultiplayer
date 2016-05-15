@@ -3,7 +3,6 @@
 SFHealthSpriteComponent::SFHealthSpriteComponent(GameObject * inGameObject) :
 	SFSpriteComponent(inGameObject)
 {
-	Log("Called cons of HealthSprCom..");
 }
 
 sf::Sprite & SFHealthSpriteComponent::GetSprite()
