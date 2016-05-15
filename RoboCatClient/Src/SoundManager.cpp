@@ -11,6 +11,8 @@ SoundManager::SoundManager()
 {
 	LoadSoundFromFile(pickup, pickupB, "../Assets/audio/Pickup.wav");
 	LoadSoundFromFile(shoot, shootB, "../Assets/audio/hit.wav");
+	LoadSoundFromFile(death, deathB, "../Assets/audio/hit.wav");
+	LoadSoundFromFile(join, joinB, "../Assets/audio/hit.wav");
 	LoadMusicFromFile(bgMusic, "../Assets/audio/background.wav");
 }
 
@@ -43,10 +45,13 @@ void SoundManager::PlaySound(SoundToPlay p_sound)
 		pickup.play();
 		break;
 	case SoundManager::STP_Shoot:
+		shoot.play();
 		break;
 	case SoundManager::STP_Death:
+		death.play();
 		break;
 	case SoundManager::STP_Join:
+		join.play();
 		break;
 	}
 }

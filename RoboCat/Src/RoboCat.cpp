@@ -69,8 +69,6 @@ void RoboCat::ProcessInput( float inDeltaTime, const InputState& inInputState )
 		SetRotation(rot);
 
 	mIsShooting = inInputState.IsShooting();
-
-
 }
 
 void RoboCat::AdjustVelocityByThrust( float inDeltaTime )
