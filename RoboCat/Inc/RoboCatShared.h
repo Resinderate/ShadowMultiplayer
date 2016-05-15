@@ -51,6 +51,7 @@ class GameObject;
 #include "SFML\System.hpp"
 #include "SFML\Window.hpp"
 #include "SFML\Graphics.hpp"
+#include "SFML\Audio.hpp"
 
 #include "RoboMath.h"
 
@@ -84,6 +85,7 @@ class GameObject;
 #include "Yarn.h"
 #include "StringUtils.h"
 #include "ScoreBoardManager.h"
+#include "SoundManager.h"
 
 #include "WeightedTimedMovingAverage.h"
 #include "ReplicationCommand.h"

@@ -210,7 +210,6 @@ void RoboCat::ProcessCollisions()
 							mVelocity -= impulse * 2.f;
 							mVelocity *= mWallRestitution;
 						}
-
 					}
 				}
 			}
