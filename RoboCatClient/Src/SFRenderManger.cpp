@@ -5,9 +5,11 @@ std::unique_ptr< SFRenderManager >	SFRenderManager::sInstance;
 SFRenderManager::SFRenderManager()
 {
 	// Might need some view stuff in here or something.
-	view.reset(sf::FloatRect(0, 0, 1280, 720));
+	view.reset(sf::FloatRect(0, 0, 800, 600));
 	SFWindowManager::sInstance->setView(view);
 	m_startScreen.setTexture(*SFTextureManager::sInstance->GetTexture("start_screen"));
+	m_diedScreen.setTexture(*SFTextureManager::sInstance->GetTexture("died_screen"));
+	m_winnerScreen.setTexture(*SFTextureManager::sInstance->GetTexture("winner_screen"));
 }
 
 void SFRenderManager::RenderUI()
@@ -64,7 +66,11 @@ void SFRenderManager::RenderUI()
 
 void SFRenderManager::RenderShadows()
 {
-	sf::Vector2f player = FindCatCentre();
+	sf::Vector2f player;
+	if (FindCatCentre() == sf::Vector2f(-1, -1))
+		player = m_lastCatPos;
+	else
+		player = FindCatCentre();
 	auto cen = view.getCenter();
 	auto size = view.getSize();
 
@@ -93,9 +99,12 @@ void SFRenderManager::UpdateView()
 {
 	// Lower rate means more 'lag' on the camera following the player.
 	float rate = .01f;
-	sf::Vector2f player = FindCatCentre();
-	sf::Vector2f newCentre = view.getCenter() + ((player - view.getCenter()) * rate);
-	view.setCenter(newCentre);
+	if (FindCatCentre() != sf::Vector2f(-1, -1))
+	{
+		sf::Vector2f player = FindCatCentre();
+		sf::Vector2f newCentre = view.getCenter() + ((player - view.getCenter()) * rate);
+		view.setCenter(newCentre);
+	}
 	SFWindowManager::sInstance->setView(view);
 }
 
@@ -123,11 +132,13 @@ sf::Vector2f SFRenderManager::FindCatCentre()
 			{
 				// If so grab the centre point.
 				auto centre = cat->GetLocation();
+				m_lastCatPos.x = centre.mX;
+				m_lastCatPos.y = centre.mY;
 				return sf::Vector2f(centre.mX, centre.mY);
 			}
 		}
 	}
-	return sf::Vector2f();
+	return sf::Vector2f(-1, -1);
 }
 //using ronans code above to get the players details for the HUD
 uint8_t SFRenderManager::FindCatHealth()
@@ -148,6 +159,26 @@ uint8_t SFRenderManager::FindCatHealth()
 		}
 	}
 	return 0;
+}
+
+// Returns the alive cats in the X, and the total numbers of cats in the Y.
+sf::Vector2f SFRenderManager::NumberofAliveCats()
+{
+	int numberOfCats = 0;
+	int aliveCats = 0;
+	uint32_t catID = (uint32_t)'RCAT';
+	for (auto obj : World::sInstance->GetGameObjects())
+	{
+		// Find a cat.
+		if (obj->GetClassId() == catID)
+		{
+			RoboCat *cat = dynamic_cast<RoboCat*>(obj.get());
+			numberOfCats++;
+			if (cat->GetHealth() > 0)
+				aliveCats++;
+		}
+	}
+	return sf::Vector2f(aliveCats, numberOfCats);
 }
 
 void SFRenderManager::StaticInit()
@@ -228,7 +259,33 @@ void SFRenderManager::Render()
 
 		// Draw UI elements.
 		SFRenderManager::sInstance->RenderUI();
-		
+
+		// Player is dead.
+		if (FindCatCentre() == sf::Vector2f(-1, -1))
+		{
+			// Print some you are dead screen
+			sf::Vector2f died(m_lastCatPos.x - view.getSize().x / 2, m_lastCatPos.y - view.getSize().y / 2);
+			m_diedScreen.setPosition(died);
+			SFWindowManager::sInstance->draw(m_diedScreen);
+		}
+		else
+		{
+			// We are the last man standing.
+			sf::Vector2f cats = NumberofAliveCats();
+
+			Log("Cats Alive:" + std::to_string(cats.x));
+			Log("Total Cats:" + std::to_string(cats.y));
+
+			if (cats.x == 1.f && FindCatHealth() > 0)
+			{
+				// Draw some you are the winner screen.
+				auto pos = FindCatCentre();
+				//sf::Vector2f offsetPos(pos.x - view.getSize().x / 2, pos.y - view.getSize().y / 2);
+				sf::Vector2f offsetPos(pos.x, pos.y);
+				m_diedScreen.setPosition(offsetPos);
+				SFWindowManager::sInstance->draw(m_winnerScreen);
+			}
+		}
 	}
 	// The game has not started.
 	else

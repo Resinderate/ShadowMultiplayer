@@ -28,9 +28,13 @@ private:
 	sf::Vector2f FindCatCentre();
 
 	uint8_t FindCatHealth();
+	sf::Vector2f NumberofAliveCats();
 
 	//this can't be only place that holds on to component- it has to live inside a GameObject in the world
 	vector< SFSpriteComponent* > mComponents;
 	sf::View view;
 	sf::Sprite m_startScreen;
+	sf::Sprite m_diedScreen;
+	sf::Sprite m_winnerScreen;
+	sf::Vector2f m_lastCatPos;
 };

@@ -17,7 +17,6 @@ sf::Sprite & SFHealthSpriteComponent::GetSprite()
 	int health = mGameObject->GetAsCat()->GetHealth();
 	m_sprite.setTexture(*SFTextureManager::sInstance->GetTexture(GetCorrectTexture(health)));
 
-	Log("Got the sprite for health!");
 	return m_sprite;
 }
 

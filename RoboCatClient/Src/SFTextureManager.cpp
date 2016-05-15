@@ -17,6 +17,8 @@ SFTextureManager::SFTextureManager()
 	CacheTexture("stone", "../Assets/stone.png");
 	CacheTexture("grass", "../Assets/grass.png");
 	CacheTexture("start_screen", "../Assets/start_screen.png");
+	CacheTexture("died_screen", "../Assets/died_screen.png");
+	CacheTexture("winner_screen", "../Assets/winner_screen.png");
 
 	// Player textures.
 	CacheTexture("hitman", "../Assets/hitman.png");
