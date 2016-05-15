@@ -12,7 +12,7 @@ public:
 		STP_Join	= 1 << 3
 	};
 	void PlaySound(SoundToPlay p_sound);
-	void PlaySoundAtLocation(SoundToPlay p_sound, sf::Vector2f p_location);
+	void PlaySoundAtLocation(SoundToPlay p_sound, sf::Vector3f p_location);
 	void PlayMusic();
 protected:
 	SoundManager();

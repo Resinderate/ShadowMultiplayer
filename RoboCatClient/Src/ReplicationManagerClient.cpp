@@ -50,18 +50,18 @@ void ReplicationManagerClient::ReadAndDoCreateAction( InputMemoryBitStream& inIn
 		//it had really be the rigth type...
 		assert( gameObject->GetClassId() == fourCCName );
 	}
-
+	
+	//and read state
+	gameObject->Read( inInputStream );
 	if (gameObject->GetClassId() == 'RCAT')
 	{
 		SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Join);
 	}
 	if (gameObject->GetClassId() == 'YARN')
 	{
-		SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Join);
-		gameObject->GetLocation();
+		SoundManager::sInstance->PlaySoundAtLocation(SoundManager::SoundToPlay::STP_Join, sf::Vector3f(gameObject->GetLocation().mX, gameObject->GetLocation().mY, gameObject->GetLocation().mZ));
+		Log(std::to_string(gameObject->GetLocation().mX) + "," + std::to_string(gameObject->GetLocation().mY) + "," + std::to_string(gameObject->GetLocation().mZ));
 	}
-	//and read state
-	gameObject->Read( inInputStream );
 }
 
 void ReplicationManagerClient::ReadAndDoUpdateAction( InputMemoryBitStream& inInputStream, int inNetworkId )
@@ -81,14 +81,14 @@ void ReplicationManagerClient::ReadAndDoDestroyAction( InputMemoryBitStream& inI
 	GameObjectPtr gameObject = NetworkManagerClient::sInstance->GetGameObject( inNetworkId );
 	if( gameObject )
 	{
+		if (gameObject->GetClassId() == 'RCAT')
+		{
+			SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Death);
+		}
 		gameObject->SetDoesWantToDie( true );
 		NetworkManagerClient::sInstance->RemoveFromNetworkIdToGameObjectMap( gameObject );
 	}
 
-	if (gameObject->GetClassId() == 'RCAT')
-	{
-		SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Death);
-	}
 }
 
 void ReplicationManagerClient::ReadAndDoRPCAction(InputMemoryBitStream& inInputStream, int inNetworkId)
