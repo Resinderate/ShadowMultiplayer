@@ -19,6 +19,7 @@
     <ClCompile Include="Src\FontManger.cpp" />
     <ClCompile Include="Src\Log.cpp" />
     <ClCompile Include="Src\PlayerTextureGenerator.cpp" />
+    <ClCompile Include="Src\SFHealthSpriteComponent.cpp" />
     <ClCompile Include="Src\SFRenderManger.cpp" />
     <ClCompile Include="Src\SFSpriteComponent.cpp" />
     <ClCompile Include="Src\SFTextureManager.cpp" />
