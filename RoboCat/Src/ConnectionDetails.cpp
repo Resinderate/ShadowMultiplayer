@@ -19,8 +19,10 @@ void ConnectionDetails::Load()
 	m_clientPort = port;
 	m_serverPort = port;
 
+	StringUtils::Log("TRYING TO OPEN FILES", 1);
+
 	string line;
-	std::ifstream nameFile("name.txt");
+	std::ifstream nameFile("../Assets/inputs/name.txt");
 	if (nameFile.good())
 	{
 		getline(nameFile, line);
@@ -28,7 +30,7 @@ void ConnectionDetails::Load()
 	}
 	nameFile.close();
 
-	std::ifstream ipFile("ip.txt");
+	std::ifstream ipFile("../Assets/inputs/ip.txt");
 	if (ipFile.good())
 	{
 		getline(ipFile, line);
@@ -44,6 +46,8 @@ string ConnectionDetails::GetClientName()
 
 string ConnectionDetails::GetClientDestination()
 {
+	string asd = m_clientIP + ":" + std::to_string(m_clientPort);
+	StringUtils::Log(asd.c_str(), 1);
 	return m_clientIP + ":" + std::to_string(m_clientPort);
 }
 
