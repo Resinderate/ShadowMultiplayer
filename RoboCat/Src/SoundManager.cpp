@@ -42,15 +42,18 @@ void SoundManager::PlaySound(SoundToPlay p_sound)
 	switch (p_sound)
 	{
 	case SoundManager::STP_Pickup:
+		pickup.setRelativeToListener(true);
 		pickup.play();
 		break;
 	case SoundManager::STP_Shoot:
 		shoot.play();
 		break;
 	case SoundManager::STP_Death:
+		death.setRelativeToListener(true);
 		death.play();
 		break;
 	case SoundManager::STP_Join:
+		join.setRelativeToListener(true);
 		join.play();
 		break;
 	}
@@ -61,7 +64,7 @@ void SoundManager::PlaySoundAtLocation(SoundToPlay p_sound, sf::Vector3f p_locat
 	switch (p_sound)
 	{
 	case SoundManager::STP_Shoot:
-		shoot.setAttenuation(0.03);
+		shoot.setAttenuation(0.15);
 		shoot.setPosition(p_location);
 		shoot.play();
 		break;
