@@ -15,7 +15,8 @@ bool MouseServer::HandleCollisionWithCat( RoboCat* inCat )
 {
 	if (!picked)
 	{
-		inCat->GetHealth()++;
+		if (inCat->GetHealth() <= 15)
+			inCat->GetHealth()++;
 		picked = true;
 		
 		// Hacked in here.
