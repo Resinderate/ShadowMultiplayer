@@ -370,11 +370,11 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\RoboCatClient\Inc\SoundManager.h" />
     <ClInclude Include="Inc\AckRange.h" />
     <ClInclude Include="Inc\ConnectionDetails.h" />
     <ClInclude Include="Inc\Line.hpp" />
     <ClInclude Include="Inc\ShadowFactory.hpp" />
+    <ClInclude Include="Inc\SoundManager.h" />
     <ClInclude Include="Inc\Trigonometry.hpp" />
     <ClInclude Include="Inc\VectorAlgebra2D.hpp" />
     <ClInclude Include="Inc\Yarn.h" />
@@ -408,11 +408,11 @@
     <ClInclude Include="Inc\UDPSocket.h" />
     <ClInclude Include="Inc\WeightedTimedMovingAverage.h" />
     <ClInclude Include="Inc\World.h" />
-    <ClCompile Include="..\RoboCatClient\Src\SoundManager.cpp" />
     <ClCompile Include="Src\AckRange.cpp" />
     <ClCompile Include="Src\ConnectionDetails.cpp" />
     <ClCompile Include="Src\Line.cpp" />
     <ClCompile Include="Src\ShadowFactory.cpp" />
+    <ClCompile Include="Src\SoundManager.cpp" />
     <ClCompile Include="Src\Trigonometry.cpp" />
     <ClCompile Include="Src\Yarn.cpp" />
     <ClCompile Include="Src\DeliveryNotificationManager.cpp" />

@@ -87,7 +87,7 @@ class GameObject;
 #include "StringUtils.h"
 #include "ScoreBoardManager.h"
 
-#include "../ShadowMultiplayer/RoboCatClient/Inc/SoundManager.h"
+#include "SoundManager.h"
 
 #include "WeightedTimedMovingAverage.h"
 #include "ReplicationCommand.h"

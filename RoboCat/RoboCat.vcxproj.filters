@@ -124,6 +124,9 @@
     <ClInclude Include="Inc\ConnectionDetails.h">
       <Filter>Inc</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\SoundManager.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\GameObject.cpp">
@@ -211,6 +214,9 @@
       <Filter>Src</Filter>
     </ClCompile>
     <ClCompile Include="Src\ConnectionDetails.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\SoundManager.cpp">
       <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>

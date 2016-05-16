@@ -6,10 +6,10 @@ public:
 	static std::unique_ptr< SoundManager >	sInstance;
 	enum SoundToPlay
 	{
-		STP_Pickup  = 1 << 0,
-		STP_Shoot   = 1 << 1,
-		STP_Death	= 1 << 2,
-		STP_Join	= 1 << 3
+		STP_Pickup = 1 << 0,
+		STP_Shoot = 1 << 1,
+		STP_Death = 1 << 2,
+		STP_Join = 1 << 3
 	};
 	void PlaySound(SoundToPlay p_sound);
 	void PlaySoundAtLocation(SoundToPlay p_sound, sf::Vector3f p_location);
