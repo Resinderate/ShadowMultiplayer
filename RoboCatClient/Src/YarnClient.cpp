@@ -2,7 +2,6 @@
 
 YarnClient::YarnClient()
 {
-	SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Shoot);
 	m_sprite.reset(new SFSpriteComponent(this));
 	m_sprite->SetTexture(SFTextureManager::sInstance->GetTexture("bullet"));
 }

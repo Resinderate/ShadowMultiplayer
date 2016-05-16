@@ -59,9 +59,13 @@ void ReplicationManagerClient::ReadAndDoCreateAction( InputMemoryBitStream& inIn
 	}
 	if (gameObject->GetClassId() == 'YARN')
 	{
-		float dist = thor::length(SFRenderManager::sInstance->FindCatCentre()-sf::Vector2f(gameObject->GetLocation().mX, gameObject->GetLocation().mY));
-		SoundManager::sInstance->PlaySoundAtLocation(SoundManager::SoundToPlay::STP_Join, sf::Vector3f(gameObject->GetLocation().mX, gameObject->GetLocation().mY, gameObject->GetLocation().mZ));
-		Log(std::to_string(gameObject->GetLocation().mX) + "," + std::to_string(gameObject->GetLocation().mY) + "," + std::to_string(gameObject->GetLocation().mZ));
+		auto loc = gameObject->GetLocation();
+		sf::Listener::setPosition(loc.mX, loc.mY, 0);
+
+		SoundManager::sInstance->PlaySoundAtLocation(SoundManager::SoundToPlay::STP_Shoot, sf::Vector3f(gameObject->GetLocation().mX, gameObject->GetLocation().mY, 0));
+		
+		// Test the attenuation volume by playing the sounds from a fixed point instead.
+		//SoundManager::sInstance->PlaySoundAtLocation(SoundManager::SoundToPlay::STP_Shoot, sf::Vector3f(0, 0, 0));
 	}
 }
 

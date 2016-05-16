@@ -61,7 +61,7 @@ void SoundManager::PlaySoundAtLocation(SoundToPlay p_sound, sf::Vector3f p_locat
 	switch (p_sound)
 	{
 	case SoundManager::STP_Shoot:
-		shoot.setAttenuation(100);
+		shoot.setAttenuation(0.03);
 		shoot.setPosition(p_location);
 		shoot.play();
 		break;
