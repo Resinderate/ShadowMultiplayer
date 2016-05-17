@@ -50,7 +50,7 @@ void ReplicationManagerClient::ReadAndDoCreateAction( InputMemoryBitStream& inIn
 		//it had really be the rigth type...
 		assert( gameObject->GetClassId() == fourCCName );
 	}
-	
+
 	//and read state
 	gameObject->Read( inInputStream );
 	if (gameObject->GetClassId() == 'RCAT')
@@ -59,9 +59,14 @@ void ReplicationManagerClient::ReadAndDoCreateAction( InputMemoryBitStream& inIn
 	}
 	if (gameObject->GetClassId() == 'YARN')
 	{
-		SoundManager::sInstance->PlaySoundAtLocation(SoundManager::SoundToPlay::STP_Join, sf::Vector3f(gameObject->GetLocation().mX, gameObject->GetLocation().mY, gameObject->GetLocation().mZ));
-		Log(std::to_string(gameObject->GetLocation().mX) + "," + std::to_string(gameObject->GetLocation().mY) + "," + std::to_string(gameObject->GetLocation().mZ));
-	}
+		auto loc = SFRenderManager::sInstance->FindCatCentre();
+		sf::Listener::setPosition(loc.x, loc.y, 0);
+
+		SoundManager::sInstance->PlaySoundAtLocation(SoundManager::SoundToPlay::STP_Shoot, sf::Vector3f(gameObject->GetLocation().mX, gameObject->GetLocation().mY, 0));
+		
+		// Test the attenuation volume by playing the sounds from a fixed point instead.
+		//SoundManager::sInstance->PlaySoundAtLocation(SoundManager::SoundToPlay::STP_Shoot, sf::Vector3f(0, 0, 0));
+}
 }
 
 void ReplicationManagerClient::ReadAndDoUpdateAction( InputMemoryBitStream& inInputStream, int inNetworkId )

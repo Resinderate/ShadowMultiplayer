@@ -16,6 +16,8 @@ public:
 	void RemoveComponent(SFSpriteComponent* inComponent);
 	int	 GetComponentIndex(SFSpriteComponent* inComponent) const;
 
+	sf::Vector2f FindCatCentre();
+
 private:
 
 	SFRenderManager();
@@ -24,8 +26,6 @@ private:
 	void RenderShadows();
 	void UpdateView();
 	void RenderTexturedWorld();
-
-	sf::Vector2f FindCatCentre();
 
 	uint8_t FindCatHealth();
 	sf::Vector2f NumberofAliveCats();
