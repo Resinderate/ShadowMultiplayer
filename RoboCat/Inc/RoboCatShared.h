@@ -87,6 +87,8 @@ class GameObject;
 #include "StringUtils.h"
 #include "ScoreBoardManager.h"
 
+#include "SoundManager.h"
+
 #include "WeightedTimedMovingAverage.h"
 #include "ReplicationCommand.h"
 #include "NetworkManager.h"

@@ -18,7 +18,7 @@ protected:
 
 
 private:
-
+	sf::Vector2f		mCatInfo;
 	void InterpolateClientSidePrediction( float inOldRotation, const Vector3& inOldLocation, const Vector3& inOldVelocity, bool inIsForRemoteCat );
 
 	float				mTimeLocationBecameOutOfSync;

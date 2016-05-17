@@ -66,9 +66,6 @@
     <ClCompile Include="Src\PlayerTextureGenerator.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClCompile Include="Src\SoundManager.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
     <ClCompile Include="Src\SFHealthSpriteComponent.cpp">
       <Filter>Src</Filter>
     </ClCompile>
@@ -123,9 +120,6 @@
       <Filter>Inc</Filter>
     </ClInclude>
     <ClInclude Include="Inc\PlayerTextureGenerator.h">
-      <Filter>Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="Inc\SoundManager.h">
       <Filter>Inc</Filter>
     </ClInclude>
   </ItemGroup>

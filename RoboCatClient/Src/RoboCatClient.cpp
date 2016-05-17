@@ -64,6 +64,8 @@ void RoboCatClient::Update()
 			mTimeLocationBecameOutOfSync = 0.f;
 		}
 	}
+
+	
 }
 
 void RoboCatClient::Read( InputMemoryBitStream& inInputStream )

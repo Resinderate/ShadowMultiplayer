@@ -374,6 +374,7 @@
     <ClInclude Include="Inc\ConnectionDetails.h" />
     <ClInclude Include="Inc\Line.hpp" />
     <ClInclude Include="Inc\ShadowFactory.hpp" />
+    <ClInclude Include="Inc\SoundManager.h" />
     <ClInclude Include="Inc\Trigonometry.hpp" />
     <ClInclude Include="Inc\VectorAlgebra2D.hpp" />
     <ClInclude Include="Inc\Yarn.h" />
@@ -411,6 +412,7 @@
     <ClCompile Include="Src\ConnectionDetails.cpp" />
     <ClCompile Include="Src\Line.cpp" />
     <ClCompile Include="Src\ShadowFactory.cpp" />
+    <ClCompile Include="Src\SoundManager.cpp" />
     <ClCompile Include="Src\Trigonometry.cpp" />
     <ClCompile Include="Src\Yarn.cpp" />
     <ClCompile Include="Src\DeliveryNotificationManager.cpp" />

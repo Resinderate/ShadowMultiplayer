@@ -7,9 +7,15 @@ Mouse::Mouse()
 	picked = false;
 }
 
-
 bool Mouse::HandleCollisionWithCat( RoboCat* inCat )
 {
+	if (!picked)
+	{
+//		inCat->GetHealth()++;
+//		picked = true;
+
+		SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Pickup);
+	}
 	( void ) inCat;
 	return false;
 }

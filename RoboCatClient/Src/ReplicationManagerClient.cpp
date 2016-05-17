@@ -22,6 +22,9 @@ void ReplicationManagerClient::Read( InputMemoryBitStream& inInputStream )
 		case RA_Destroy:
 			ReadAndDoDestroyAction( inInputStream, networkId );
 			break;
+	/*	case RA_RPC:
+			ReadAndDoRPCAction(inInputStream, networkId);
+			break;*/
 		}
 
 	}
@@ -50,6 +53,20 @@ void ReplicationManagerClient::ReadAndDoCreateAction( InputMemoryBitStream& inIn
 
 	//and read state
 	gameObject->Read( inInputStream );
+	if (gameObject->GetClassId() == 'RCAT')
+	{
+		SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Join);
+	}
+	if (gameObject->GetClassId() == 'YARN')
+	{
+		auto loc = SFRenderManager::sInstance->FindCatCentre();
+		sf::Listener::setPosition(loc.x, loc.y, 0);
+
+		SoundManager::sInstance->PlaySoundAtLocation(SoundManager::SoundToPlay::STP_Shoot, sf::Vector3f(gameObject->GetLocation().mX, gameObject->GetLocation().mY, 0));
+		
+		// Test the attenuation volume by playing the sounds from a fixed point instead.
+		//SoundManager::sInstance->PlaySoundAtLocation(SoundManager::SoundToPlay::STP_Shoot, sf::Vector3f(0, 0, 0));
+}
 }
 
 void ReplicationManagerClient::ReadAndDoUpdateAction( InputMemoryBitStream& inInputStream, int inNetworkId )
@@ -69,7 +86,20 @@ void ReplicationManagerClient::ReadAndDoDestroyAction( InputMemoryBitStream& inI
 	GameObjectPtr gameObject = NetworkManagerClient::sInstance->GetGameObject( inNetworkId );
 	if( gameObject )
 	{
+		if (gameObject->GetClassId() == 'RCAT')
+		{
+			SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Death);
+		}
 		gameObject->SetDoesWantToDie( true );
 		NetworkManagerClient::sInstance->RemoveFromNetworkIdToGameObjectMap( gameObject );
 	}
+
+}
+
+void ReplicationManagerClient::ReadAndDoRPCAction(InputMemoryBitStream& inInputStream, int inNetworkId)
+{
+	SoundManager::SoundToPlay sound;
+	inInputStream.Read(sound);
+	SoundManager::sInstance->PlaySound(sound);
+	Log("Sound Played");
 }

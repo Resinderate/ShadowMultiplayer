@@ -123,6 +123,7 @@ void Server::HandleNewClient( ClientProxyPtr inClientProxy )
 	
 	ScoreBoardManager::sInstance->AddEntry( playerId, inClientProxy->GetName() );
 	SpawnCatForPlayer( playerId );
+
 }
 
 void Server::SpawnCatForPlayer( int inPlayerId )
@@ -134,6 +135,7 @@ void Server::SpawnCatForPlayer( int inPlayerId )
 	// Pick one of a few random locations.
 	int randomIndex = rand() % m_spawnPoints.size();
 	cat->SetLocation( m_spawnPoints[randomIndex] );
+
 
 }
 

@@ -69,8 +69,6 @@ void RoboCat::ProcessInput( float inDeltaTime, const InputState& inInputState )
 		SetRotation(rot);
 
 	mIsShooting = inInputState.IsShooting();
-
-
 }
 
 void RoboCat::AdjustVelocityByThrust( float inDeltaTime )
@@ -155,7 +153,6 @@ void RoboCat::ProcessCollisions()
 		GameObject* target = goIt->get();
 		if (target->GetClassId() == 'MOUS')
 		{
-
 		}
 		if( target != this && !target->DoesWantToDie() )
 		{
