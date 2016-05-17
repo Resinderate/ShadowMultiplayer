@@ -81,9 +81,27 @@ void NetworkManagerServer::HandlePacketFromNewClient( InputMemoryBitStream& inIn
 		//read the name
 		string name;
 		inInputStream.Read( name );
-		ClientProxyPtr newClientProxy = std::make_shared< ClientProxy >( inFromAddress, name, mNewPlayerId++ );
+
+		// Check if there is a perfered ID type for this player.
+		int prefID = PersistantPlayerSprites::sInstance->GetID(name);
+		if (prefID != -1)
+		{
+			while (mNewPlayerId % prefID != 0)
+			{
+				mNewPlayerId++;
+			}
+		}
+		else
+		{
+			mNewPlayerId++;
+		}
+		int id = mNewPlayerId;
+		
+		ClientProxyPtr newClientProxy = std::make_shared< ClientProxy >( inFromAddress, name, id );
 		mAddressToClientMap[ inFromAddress ] = newClientProxy;
 		mPlayerIdToClientMap[ newClientProxy->GetPlayerId() ] = newClientProxy;
+
+		PersistantPlayerSprites::sInstance->AddPlayerEntry(name, id);
 		
 		//tell the server about this client, spawn a cat, etc...
 		//if we had a generic message system, this would be a good use for it...

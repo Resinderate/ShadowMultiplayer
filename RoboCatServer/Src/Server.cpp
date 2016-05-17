@@ -9,6 +9,7 @@ bool Server::StaticInit()
 {
 	ShadowFactory::StaticInit();
 	ConnectionDetails::StaticInit();
+	PersistantPlayerSprites::StaticInit();
 
 	sInstance.reset( new Server() );
 	return true;
